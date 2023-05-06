@@ -10,7 +10,7 @@ ESX = {}
 --<h3>(Serverside Only)</h3>
 --Registers a server callback, which is used for sending Server Data, to a client.
 ---@param eventName string
----@param callback fun(src: ExtendedPlayer, cb: function, ...: any) Function to run
+---@param callback fun(src: number, cb: function, ...: any) Function to run
 function ESX.RegisterServerCallback(eventName, callback) end
 
 --<h3>(Serverside Only)</h3>

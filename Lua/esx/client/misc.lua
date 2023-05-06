@@ -1,0 +1,792 @@
+---@meta
+
+
+--ESX Progressbar
+---@class ESX_ProgressbarOptions[: table]
+---@field FreezePlayer? boolean Should the player be freezed
+---@field animation? ESX_ProgressbarAnimationOption Animation that should be played
+---@field onFinish? function Callback that gets triggered when finished
+---@field onCancel? function Callback that gets triggered when cancelled
+
+--ESX Progressbar Animation Option
+---@class ESX_ProgressbarAnimationOption
+---@field type string
+---@field dict string
+---@field lib string
+
+---@alias ESX_TextUI_Types string
+---| "error"
+---| "success"
+---| "info"
+
+---@alias ESX_AdvancedNotificationDictionary string
+---| "CHAR_ABIGAIL" ![](https://wiki.gtanet.work/images/thumb/2/26/NotificationPicture_CHAR_ABIGAIL.png/200px-NotificationPicture_CHAR_ABIGAIL.png)
+---| "CHAR_ALL_PLAYERS_CONF" ![](https://wiki.gtanet.work/images/thumb/7/72/NotificationPicture_CHAR_ALL_PLAYERS_CONF.png/200px-NotificationPicture_CHAR_ALL_PLAYERS_CONF.png)
+---| "CHAR_AMANDA" ![](https://wiki.gtanet.work/images/thumb/3/38/NotificationPicture_CHAR_AMANDA.png/200px-NotificationPicture_CHAR_AMANDA.png)
+---| "CHAR_AMMUNATION" ![](https://wiki.gtanet.work/images/thumb/7/74/NotificationPicture_CHAR_AMMUNATION.png/200px-NotificationPicture_CHAR_AMMUNATION.png)
+---| "CHAR_ANDREAS" ![](https://wiki.gtanet.work/images/thumb/2/2c/NotificationPicture_CHAR_ANDREAS.png/200px-NotificationPicture_CHAR_ANDREAS.png)
+---| "CHAR_ANTONIA" ![](https://wiki.gtanet.work/images/thumb/a/ae/NotificationPicture_CHAR_ANTONIA.png/200px-NotificationPicture_CHAR_ANTONIA.png)
+---| "CHAR_ARTHUR" ![](https://wiki.gtanet.work/images/thumb/8/8b/NotificationPicture_CHAR_ARTHUR.png/200px-NotificationPicture_CHAR_ARTHUR.png)
+---| "CHAR_ASHLEY" ![](https://wiki.gtanet.work/images/thumb/f/f1/NotificationPicture_CHAR_ASHLEY.png/200px-NotificationPicture_CHAR_ASHLEY.png)
+---| "CHAR_BANK_BOL" ![](https://wiki.gtanet.work/images/thumb/f/fc/NotificationPicture_CHAR_BANK_BOL.png/200px-NotificationPicture_CHAR_BANK_BOL.png)
+---| "CHAR_BANK_FLEECA" ![](https://wiki.gtanet.work/images/thumb/f/ff/NotificationPicture_CHAR_BANK_FLEECA.png/200px-NotificationPicture_CHAR_BANK_FLEECA.png)
+---| "CHAR_BANK_MAZE" ![](https://wiki.gtanet.work/images/thumb/b/b0/NotificationPicture_CHAR_BANK_MAZE.png/200px-NotificationPicture_CHAR_BANK_MAZE.png)
+---| "CHAR_BARRY" ![](https://wiki.gtanet.work/images/thumb/e/ec/NotificationPicture_CHAR_BARRY.png/200px-NotificationPicture_CHAR_BARRY.png)
+---| "CHAR_BEVERLY" ![](https://wiki.gtanet.work/images/thumb/9/9f/NotificationPicture_CHAR_BEVERLY.png/200px-NotificationPicture_CHAR_BEVERLY.png)
+---| "CHAR_BIKESITE" ![](https://wiki.gtanet.work/images/thumb/1/17/NotificationPicture_CHAR_BIKESITE.png/200px-NotificationPicture_CHAR_BIKESITE.png)
+---| "CHAR_BLANK_ENTRY" ![](https://wiki.gtanet.work/images/thumb/f/f0/NotificationPicture_CHAR_BLANK_ENTRY.png/200px-NotificationPicture_CHAR_BLANK_ENTRY.png)
+---| "CHAR_BLIMP" ![](https://wiki.gtanet.work/images/thumb/b/b6/NotificationPicture_CHAR_BLIMP.png/200px-NotificationPicture_CHAR_BLIMP.png)
+---| "CHAR_BLOCKED" ![](https://wiki.gtanet.work/images/thumb/5/53/NotificationPicture_CHAR_BLOCKED.png/200px-NotificationPicture_CHAR_BLOCKED.png)
+---| "CHAR_BOATSITE" ![](https://wiki.gtanet.work/images/thumb/9/97/NotificationPicture_CHAR_BOATSITE.png/200px-NotificationPicture_CHAR_BOATSITE.png)
+---| "CHAR_BROKEN_DOWN_GIRL" ![](https://wiki.gtanet.work/images/thumb/d/dd/NotificationPicture_CHAR_BROKEN_DOWN_GIRL.png/200px-NotificationPicture_CHAR_BROKEN_DOWN_GIRL.png)
+---| "CHAR_BUGSTARS" ![](https://wiki.gtanet.work/images/thumb/e/eb/NotificationPicture_CHAR_BUGSTARS.png/200px-NotificationPicture_CHAR_BUGSTARS.png)
+---| "CHAR_CALL911" ![](https://wiki.gtanet.work/images/thumb/d/d5/NotificationPicture_CHAR_CALL911.png/200px-NotificationPicture_CHAR_CALL911.png)
+---| "CHAR_CARSITE" ![](https://wiki.gtanet.work/images/thumb/e/e9/NotificationPicture_CHAR_CARSITE.png/200px-NotificationPicture_CHAR_CARSITE.png)
+---| "CHAR_CARSITE2" ![](https://wiki.gtanet.work/images/thumb/d/d1/NotificationPicture_CHAR_CARSITE2.png/200px-NotificationPicture_CHAR_CARSITE2.png)
+---| "CHAR_CASTRO" ![](https://wiki.gtanet.work/images/thumb/c/c0/NotificationPicture_CHAR_CASTRO.png/200px-NotificationPicture_CHAR_CASTRO.png)
+---| "CHAR_CHAT_CALL" ![](https://wiki.gtanet.work/images/thumb/8/88/NotificationPicture_CHAR_CHAT_CALL.png/200px-NotificationPicture_CHAR_CHAT_CALL.png)
+---| "CHAR_CHEF" ![](https://wiki.gtanet.work/images/thumb/9/99/NotificationPicture_CHAR_CHEF.png/200px-NotificationPicture_CHAR_CHEF.png)
+---| "CHAR_CHENG" ![](https://wiki.gtanet.work/images/thumb/c/cd/NotificationPicture_CHAR_CHENG.png/200px-NotificationPicture_CHAR_CHENG.png)
+---| "CHAR_CHENGSR" ![](https://wiki.gtanet.work/images/thumb/8/8f/NotificationPicture_CHAR_CHENGSR.png/200px-NotificationPicture_CHAR_CHENGSR.png)
+---| "CHAR_CHOP" ![](https://wiki.gtanet.work/images/thumb/3/31/NotificationPicture_CHAR_CHOP.png/200px-NotificationPicture_CHAR_CHOP.png)
+---| "CHAR_CRIS" ![](https://wiki.gtanet.work/images/thumb/3/31/NotificationPicture_CHAR_CRIS.png/200px-NotificationPicture_CHAR_CRIS.png)
+---| "CHAR_DAVE" ![](https://wiki.gtanet.work/images/thumb/e/e9/NotificationPicture_CHAR_DAVE.png/200px-NotificationPicture_CHAR_DAVE.png)
+---| "CHAR_DEFAULT" ![](https://wiki.gtanet.work/images/thumb/f/ff/NotificationPicture_CHAR_DEFAULT.png/200px-NotificationPicture_CHAR_DEFAULT.png)
+---| "CHAR_DENISE" ![](https://wiki.gtanet.work/images/thumb/1/1b/NotificationPicture_CHAR_DENISE.png/200px-NotificationPicture_CHAR_DENISE.png)
+---| "CHAR_DETONATEBOMB" ![](https://wiki.gtanet.work/images/thumb/f/fc/NotificationPicture_CHAR_DETONATEBOMB.png/200px-NotificationPicture_CHAR_DETONATEBOMB.png)
+---| "CHAR_DETONATEPHONE" ![](https://wiki.gtanet.work/images/thumb/d/d0/NotificationPicture_CHAR_DETONATEPHONE.png/200px-NotificationPicture_CHAR_DETONATEPHONE.png)
+---| "CHAR_DEVIN" ![](https://wiki.gtanet.work/images/thumb/a/ad/NotificationPicture_CHAR_DEVIN.png/200px-NotificationPicture_CHAR_DEVIN.png)
+---| "CHAR_DIAL_A_SUB" ![](https://wiki.gtanet.work/images/thumb/4/44/NotificationPicture_CHAR_DIAL_A_SUB.png/200px-NotificationPicture_CHAR_DIAL_A_SUB.png)
+---| "CHAR_DOM" ![](https://wiki.gtanet.work/images/thumb/2/22/NotificationPicture_CHAR_DOM.png/200px-NotificationPicture_CHAR_DOM.png)
+---| "CHAR_DOMESTIC_GIRL" ![](https://wiki.gtanet.work/images/thumb/2/2a/NotificationPicture_CHAR_DOMESTIC_GIRL.png/200px-NotificationPicture_CHAR_DOMESTIC_GIRL.png)
+---| "CHAR_DREYFUSS" ![](https://wiki.gtanet.work/images/thumb/d/dc/NotificationPicture_CHAR_DREYFUSS.png/200px-NotificationPicture_CHAR_DREYFUSS.png)
+---| "CHAR_DR_FRIEDLANDER" ![](https://wiki.gtanet.work/images/thumb/0/0f/NotificationPicture_CHAR_DR_FRIEDLANDER.png/200px-NotificationPicture_CHAR_DR_FRIEDLANDER.png)
+---| "CHAR_EPSILON" ![](https://wiki.gtanet.work/images/thumb/7/7d/NotificationPicture_CHAR_EPSILON.png/200px-NotificationPicture_CHAR_EPSILON.png)
+---| "CHAR_ESTATE_AGENT" ![](https://wiki.gtanet.work/images/thumb/b/bf/NotificationPicture_CHAR_ESTATE_AGENT.png/200px-NotificationPicture_CHAR_ESTATE_AGENT.png)
+---| "CHAR_FACEBOOK" ![](https://wiki.gtanet.work/images/thumb/c/c2/NotificationPicture_CHAR_FACEBOOK.png/200px-NotificationPicture_CHAR_FACEBOOK.png)
+---| "CHAR_FILMNOIR" ![](https://wiki.gtanet.work/images/thumb/8/84/NotificationPicture_CHAR_FILMNOIR.png/200px-NotificationPicture_CHAR_FILMNOIR.png)
+---| "CHAR_FLOYD" ![](https://wiki.gtanet.work/images/thumb/c/cf/NotificationPicture_CHAR_FLOYD.png/200px-NotificationPicture_CHAR_FLOYD.png)
+---| "CHAR_FRANKLIN" ![](https://wiki.gtanet.work/images/thumb/9/93/NotificationPicture_CHAR_FRANKLIN.png/200px-NotificationPicture_CHAR_FRANKLIN.png)
+---| "CHAR_FRANK_TREV_CONF" ![](https://wiki.gtanet.work/images/thumb/6/6a/NotificationPicture_CHAR_FRANK_TREV_CONF.png/200px-NotificationPicture_CHAR_FRANK_TREV_CONF.png)
+---| "CHAR_GAYMILITARY" ![](https://wiki.gtanet.work/images/thumb/6/6a/NotificationPicture_CHAR_GAYMILITARY.png/200px-NotificationPicture_CHAR_GAYMILITARY.png)
+---| "CHAR_HAO" ![](https://wiki.gtanet.work/images/thumb/1/1b/NotificationPicture_CHAR_HAO.png/200px-NotificationPicture_CHAR_HAO.png)
+---| "CHAR_HITCHER_GIRL" ![](https://wiki.gtanet.work/images/thumb/4/44/NotificationPicture_CHAR_HITCHER_GIRL.png/200px-NotificationPicture_CHAR_HITCHER_GIRL.png)
+---| "CHAR_HUMANDEFAULT" ![](https://wiki.gtanet.work/images/thumb/3/37/NotificationPicture_CHAR_HUMANDEFAULT.png/200px-NotificationPicture_CHAR_HUMANDEFAULT.png)
+---| "CHAR_HUNTER" ![](https://wiki.gtanet.work/images/thumb/0/0a/NotificationPicture_CHAR_HUNTER.png/200px-NotificationPicture_CHAR_HUNTER.png)
+---| "CHAR_JIMMY" ![](https://wiki.gtanet.work/images/thumb/3/37/NotificationPicture_CHAR_JIMMY.png/200px-NotificationPicture_CHAR_JIMMY.png)
+---| "CHAR_JIMMY_BOSTON" ![](https://wiki.gtanet.work/images/thumb/4/48/NotificationPicture_CHAR_JIMMY_BOSTON.png/200px-NotificationPicture_CHAR_JIMMY_BOSTON.png)
+---| "CHAR_JOE" ![](https://wiki.gtanet.work/images/thumb/4/43/NotificationPicture_CHAR_JOE.png/200px-NotificationPicture_CHAR_JOE.png)
+---| "CHAR_JOSEF" ![](https://wiki.gtanet.work/images/thumb/9/90/NotificationPicture_CHAR_JOSEF.png/200px-NotificationPicture_CHAR_JOSEF.png)
+---| "CHAR_JOSH" ![](https://wiki.gtanet.work/images/thumb/4/4f/NotificationPicture_CHAR_JOSH.png/200px-NotificationPicture_CHAR_JOSH.png)
+---| "CHAR_LAMAR" ![](https://wiki.gtanet.work/images/thumb/9/92/NotificationPicture_CHAR_LAMAR.png/200px-NotificationPicture_CHAR_LAMAR.png)
+---| "CHAR_LAZLOW" ![](https://wiki.gtanet.work/images/thumb/a/ad/NotificationPicture_CHAR_LAZLOW.png/200px-NotificationPicture_CHAR_LAZLOW.png)
+---| "CHAR_LESTER" ![](https://wiki.gtanet.work/images/thumb/e/e7/NotificationPicture_CHAR_LESTER.png/200px-NotificationPicture_CHAR_LESTER.png)
+---| "CHAR_LESTER_DEATHWISH" ![](https://wiki.gtanet.work/images/thumb/1/17/NotificationPicture_CHAR_LESTER_DEATHWISH.png/200px-NotificationPicture_CHAR_LESTER_DEATHWISH.png)
+---| "CHAR_LEST_FRANK_CONF" ![](https://wiki.gtanet.work/images/thumb/9/96/NotificationPicture_CHAR_LEST_FRANK_CONF.png/200px-NotificationPicture_CHAR_LEST_FRANK_CONF.png)
+---| "CHAR_LEST_MIKE_CONF" ![](https://wiki.gtanet.work/images/thumb/1/17/NotificationPicture_CHAR_LEST_MIKE_CONF.png/200px-NotificationPicture_CHAR_LEST_MIKE_CONF.png)
+---| "CHAR_LIFEINVADER" ![](https://wiki.gtanet.work/images/thumb/1/1d/NotificationPicture_CHAR_LIFEINVADER.png/200px-NotificationPicture_CHAR_LIFEINVADER.png)
+---| "CHAR_LS_CUSTOMS" ![](https://wiki.gtanet.work/images/thumb/b/b7/NotificationPicture_CHAR_LS_CUSTOMS.png/200px-NotificationPicture_CHAR_LS_CUSTOMS.png)
+---| "CHAR_LS_TOURIST_BOARD" ![](https://wiki.gtanet.work/images/thumb/d/de/NotificationPicture_CHAR_LS_TOURIST_BOARD.png/200px-NotificationPicture_CHAR_LS_TOURIST_BOARD.png)
+---| "CHAR_MANUEL" ![](https://wiki.gtanet.work/images/thumb/8/8e/NotificationPicture_CHAR_MANUEL.png/200px-NotificationPicture_CHAR_MANUEL.png)
+---| "CHAR_MARNIE" ![](https://wiki.gtanet.work/images/thumb/e/e7/NotificationPicture_CHAR_MARNIE.png/200px-NotificationPicture_CHAR_MARNIE.png)
+---| "CHAR_MARTIN" ![](https://wiki.gtanet.work/images/thumb/6/6a/NotificationPicture_CHAR_MARTIN.png/200px-NotificationPicture_CHAR_MARTIN.png)
+---| "CHAR_MARY_ANN" ![](https://wiki.gtanet.work/images/thumb/6/6e/NotificationPicture_CHAR_MARY_ANN.png/200px-NotificationPicture_CHAR_MARY_ANN.png)
+---| "CHAR_MAUDE" ![](https://wiki.gtanet.work/images/thumb/c/c4/NotificationPicture_CHAR_MAUDE.png/200px-NotificationPicture_CHAR_MAUDE.png)
+---| "CHAR_MECHANIC" ![](https://wiki.gtanet.work/images/thumb/f/fc/NotificationPicture_CHAR_MECHANIC.png/200px-NotificationPicture_CHAR_MECHANIC.png)
+---| "CHAR_MICHAEL" ![](https://wiki.gtanet.work/images/thumb/a/a7/NotificationPicture_CHAR_MICHAEL.png/200px-NotificationPicture_CHAR_MICHAEL.png)
+---| "CHAR_MIKE_FRANK_CONF" ![](https://wiki.gtanet.work/images/thumb/b/bd/NotificationPicture_CHAR_MIKE_FRANK_CONF.png/200px-NotificationPicture_CHAR_MIKE_FRANK_CONF.png)
+---| "CHAR_MIKE_TREV_CONF" ![](https://wiki.gtanet.work/images/thumb/8/86/NotificationPicture_CHAR_MIKE_TREV_CONF.png/200px-NotificationPicture_CHAR_MIKE_TREV_CONF.png)
+---| "CHAR_MILSITE" ![](https://wiki.gtanet.work/images/thumb/8/8b/NotificationPicture_CHAR_MILSITE.png/200px-NotificationPicture_CHAR_MILSITE.png)
+---| "CHAR_MINOTAUR" ![](https://wiki.gtanet.work/images/thumb/6/64/NotificationPicture_CHAR_MINOTAUR.png/200px-NotificationPicture_CHAR_MINOTAUR.png)
+---| "CHAR_MOLLY" ![](https://wiki.gtanet.work/images/thumb/d/df/NotificationPicture_CHAR_MOLLY.png/200px-NotificationPicture_CHAR_MOLLY.png)
+---| "CHAR_MP_ARMY_CONTACT" ![](https://wiki.gtanet.work/images/thumb/2/23/NotificationPicture_CHAR_MP_ARMY_CONTACT.png/200px-NotificationPicture_CHAR_MP_ARMY_CONTACT.png)
+---| "CHAR_MP_BIKER_BOSS" ![](https://wiki.gtanet.work/images/thumb/d/d9/NotificationPicture_CHAR_MP_BIKER_BOSS.png/200px-NotificationPicture_CHAR_MP_BIKER_BOSS.png)
+---| "CHAR_MP_BIKER_MECHANIC" ![](https://wiki.gtanet.work/images/thumb/f/f5/NotificationPicture_CHAR_MP_BIKER_MECHANIC.png/200px-NotificationPicture_CHAR_MP_BIKER_MECHANIC.png)
+---| "CHAR_MP_BRUCIE" ![](https://wiki.gtanet.work/images/thumb/d/de/NotificationPicture_CHAR_MP_BRUCIE.png/200px-NotificationPicture_CHAR_MP_BRUCIE.png)
+---| "CHAR_MP_DETONATEPHONE" ![](https://wiki.gtanet.work/images/thumb/c/cd/NotificationPicture_CHAR_MP_DETONATEPHONE.png/200px-NotificationPicture_CHAR_MP_DETONATEPHONE.png)
+---| "CHAR_MP_FAM_BOSS" ![](https://wiki.gtanet.work/images/thumb/8/80/NotificationPicture_CHAR_MP_FAM_BOSS.png/200px-NotificationPicture_CHAR_MP_FAM_BOSS.png)
+---| "CHAR_MP_FIB_CONTACT" ![](https://wiki.gtanet.work/images/thumb/b/bc/NotificationPicture_CHAR_MP_FIB_CONTACT.png/200px-NotificationPicture_CHAR_MP_FIB_CONTACT.png)
+---| "CHAR_MP_FM_CONTACT" ![](https://wiki.gtanet.work/images/thumb/0/02/NotificationPicture_CHAR_MP_FM_CONTACT.png/200px-NotificationPicture_CHAR_MP_FM_CONTACT.png)
+---| "CHAR_MP_GERALD" ![](https://wiki.gtanet.work/images/thumb/8/80/NotificationPicture_CHAR_MP_GERALD.png/200px-NotificationPicture_CHAR_MP_GERALD.png)
+---| "CHAR_MP_JULIO" ![](https://wiki.gtanet.work/images/thumb/6/65/NotificationPicture_CHAR_MP_JULIO.png/200px-NotificationPicture_CHAR_MP_JULIO.png)
+---| "CHAR_MP_MECHANIC" ![](https://wiki.gtanet.work/images/thumb/4/47/NotificationPicture_CHAR_MP_MECHANIC.png/200px-NotificationPicture_CHAR_MP_MECHANIC.png)
+---| "CHAR_MP_MERRYWEATHER" ![](https://wiki.gtanet.work/images/thumb/f/fd/NotificationPicture_CHAR_MP_MERRYWEATHER.png/200px-NotificationPicture_CHAR_MP_MERRYWEATHER.png)
+---| "CHAR_MP_MEX_BOSS" ![](https://wiki.gtanet.work/images/thumb/6/61/NotificationPicture_CHAR_MP_MEX_BOSS.png/200px-NotificationPicture_CHAR_MP_MEX_BOSS.png)
+---| "CHAR_MP_MEX_DOCKS" ![](https://wiki.gtanet.work/images/thumb/b/b4/NotificationPicture_CHAR_MP_MEX_DOCKS.png/200px-NotificationPicture_CHAR_MP_MEX_DOCKS.png)
+---| "CHAR_MP_MEX_LT" ![](https://wiki.gtanet.work/images/thumb/5/5e/NotificationPicture_CHAR_MP_MEX_LT.png/200px-NotificationPicture_CHAR_MP_MEX_LT.png)
+---| "CHAR_MP_MORS_MUTUAL" ![](https://wiki.gtanet.work/images/thumb/3/34/NotificationPicture_CHAR_MP_MORS_MUTUAL.png/200px-NotificationPicture_CHAR_MP_MORS_MUTUAL.png)
+---| "CHAR_MP_PROF_BOSS" ![](https://wiki.gtanet.work/images/thumb/9/98/NotificationPicture_CHAR_MP_PROF_BOSS.png/200px-NotificationPicture_CHAR_MP_PROF_BOSS.png)
+---| "CHAR_MP_RAY_LAVOY" ![](https://wiki.gtanet.work/images/thumb/e/e0/NotificationPicture_CHAR_MP_RAY_LAVOY.png/200px-NotificationPicture_CHAR_MP_RAY_LAVOY.png)
+---| "CHAR_MP_ROBERTO" ![](https://wiki.gtanet.work/images/thumb/4/4a/NotificationPicture_CHAR_MP_ROBERTO.png/200px-NotificationPicture_CHAR_MP_ROBERTO.png)
+---| "CHAR_MP_SNITCH" ![](https://wiki.gtanet.work/images/thumb/5/5d/NotificationPicture_CHAR_MP_SNITCH.png/200px-NotificationPicture_CHAR_MP_SNITCH.png)
+---| "CHAR_MP_STRETCH" ![](https://wiki.gtanet.work/images/thumb/6/6e/NotificationPicture_CHAR_MP_STRETCH.png/200px-NotificationPicture_CHAR_MP_STRETCH.png)
+---| "CHAR_MP_STRIPCLUB_PR" ![](https://wiki.gtanet.work/images/thumb/a/a1/NotificationPicture_CHAR_MP_STRIPCLUB_PR.png/200px-NotificationPicture_CHAR_MP_STRIPCLUB_PR.png)
+---| "CHAR_MRS_THORNHILL" ![](https://wiki.gtanet.work/images/thumb/1/14/NotificationPicture_CHAR_MRS_THORNHILL.png/200px-NotificationPicture_CHAR_MRS_THORNHILL.png)
+---| "CHAR_MULTIPLAYER" ![](https://wiki.gtanet.work/images/thumb/6/65/NotificationPicture_CHAR_MULTIPLAYER.png/200px-NotificationPicture_CHAR_MULTIPLAYER.png)
+---| "CHAR_NIGEL" ![](https://wiki.gtanet.work/images/thumb/f/f8/NotificationPicture_CHAR_NIGEL.png/200px-NotificationPicture_CHAR_NIGEL.png)
+---| "CHAR_OMEGA" ![](https://wiki.gtanet.work/images/thumb/7/71/NotificationPicture_CHAR_OMEGA.png/200px-NotificationPicture_CHAR_OMEGA.png)
+---| "CHAR_ONEIL" ![](https://wiki.gtanet.work/images/thumb/c/cb/NotificationPicture_CHAR_ONEIL.png/200px-NotificationPicture_CHAR_ONEIL.png)
+---| "CHAR_ORTEGA" ![](https://wiki.gtanet.work/images/thumb/0/0b/NotificationPicture_CHAR_ORTEGA.png/200px-NotificationPicture_CHAR_ORTEGA.png)
+---| "CHAR_OSCAR" ![](https://wiki.gtanet.work/images/thumb/c/c8/NotificationPicture_CHAR_OSCAR.png/200px-NotificationPicture_CHAR_OSCAR.png)
+---| "CHAR_PATRICIA" ![](https://wiki.gtanet.work/images/thumb/1/17/NotificationPicture_CHAR_PATRICIA.png/200px-NotificationPicture_CHAR_PATRICIA.png)
+---| "CHAR_PEGASUS_DELIVERY" ![](https://wiki.gtanet.work/images/thumb/6/6b/NotificationPicture_CHAR_PEGASUS_DELIVERY.png/200px-NotificationPicture_CHAR_PEGASUS_DELIVERY.png)
+---| "CHAR_PLANESITE" ![](https://wiki.gtanet.work/images/thumb/1/1d/NotificationPicture_CHAR_PLANESITE.png/200px-NotificationPicture_CHAR_PLANESITE.png)
+---| "CHAR_PROPERTY_ARMS_TRAFFICKING" ![](https://wiki.gtanet.work/images/thumb/7/71/NotificationPicture_CHAR_PROPERTY_ARMS_TRAFFICKING.png/200px-NotificationPicture_CHAR_PROPERTY_ARMS_TRAFFICKING.png)
+---| "CHAR_PROPERTY_BAR_AIRPORT" ![](https://wiki.gtanet.work/images/thumb/4/4c/NotificationPicture_CHAR_PROPERTY_BAR_AIRPORT.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_AIRPORT.png)
+---| "CHAR_PROPERTY_BAR_BAYVIEW" ![](https://wiki.gtanet.work/images/thumb/a/a6/NotificationPicture_CHAR_PROPERTY_BAR_BAYVIEW.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_BAYVIEW.png)
+---| "CHAR_PROPERTY_BAR_CAFE_ROJO" ![](https://wiki.gtanet.work/images/thumb/8/8a/NotificationPicture_CHAR_PROPERTY_BAR_CAFE_ROJO.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_CAFE_ROJO.png)
+---| "CHAR_PROPERTY_BAR_COCKOTOOS" ![](https://wiki.gtanet.work/images/thumb/7/7c/NotificationPicture_CHAR_PROPERTY_BAR_COCKOTOOS.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_COCKOTOOS.png)
+---| "CHAR_PROPERTY_BAR_ECLIPSE" ![](https://wiki.gtanet.work/images/thumb/3/38/NotificationPicture_CHAR_PROPERTY_BAR_ECLIPSE.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_ECLIPSE.png)
+---| "CHAR_PROPERTY_BAR_FES" ![](https://wiki.gtanet.work/images/thumb/a/ac/NotificationPicture_CHAR_PROPERTY_BAR_FES.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_FES.png)
+---| "CHAR_PROPERTY_BAR_HEN_HOUSE" ![](https://wiki.gtanet.work/images/thumb/b/bb/NotificationPicture_CHAR_PROPERTY_BAR_HEN_HOUSE.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_HEN_HOUSE.png)
+---| "CHAR_PROPERTY_BAR_HI_MEN" ![](https://wiki.gtanet.work/images/thumb/f/f3/NotificationPicture_CHAR_PROPERTY_BAR_HI_MEN.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_HI_MEN.png)
+---| "CHAR_PROPERTY_BAR_HOOKIES" ![](https://wiki.gtanet.work/images/thumb/5/54/NotificationPicture_CHAR_PROPERTY_BAR_HOOKIES.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_HOOKIES.png)
+---| "CHAR_PROPERTY_BAR_IRISH" ![](https://wiki.gtanet.work/images/thumb/e/e2/NotificationPicture_CHAR_PROPERTY_BAR_IRISH.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_IRISH.png)
+---| "CHAR_PROPERTY_BAR_LES_BIANCO" ![](https://wiki.gtanet.work/images/thumb/3/3b/NotificationPicture_CHAR_PROPERTY_BAR_LES_BIANCO.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_LES_BIANCO.png)
+---| "CHAR_PROPERTY_BAR_MIRROR_PARK" ![](https://wiki.gtanet.work/images/thumb/2/23/NotificationPicture_CHAR_PROPERTY_BAR_MIRROR_PARK.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_MIRROR_PARK.png)
+---| "CHAR_PROPERTY_BAR_PITCHERS" ![](https://wiki.gtanet.work/images/thumb/b/b7/NotificationPicture_CHAR_PROPERTY_BAR_PITCHERS.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_PITCHERS.png)
+---| "CHAR_PROPERTY_BAR_SINGLETONS" ![](https://wiki.gtanet.work/images/thumb/2/2e/NotificationPicture_CHAR_PROPERTY_BAR_SINGLETONS.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_SINGLETONS.png)
+---| "CHAR_PROPERTY_BAR_TEQUILALA" ![](https://wiki.gtanet.work/images/thumb/6/62/NotificationPicture_CHAR_PROPERTY_BAR_TEQUILALA.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_TEQUILALA.png)
+---| "CHAR_PROPERTY_BAR_UNBRANDED" ![](https://wiki.gtanet.work/images/thumb/8/82/NotificationPicture_CHAR_PROPERTY_BAR_UNBRANDED.png/200px-NotificationPicture_CHAR_PROPERTY_BAR_UNBRANDED.png)
+---| "CHAR_PROPERTY_CAR_MOD_SHOP" ![](https://wiki.gtanet.work/images/thumb/5/56/NotificationPicture_CHAR_PROPERTY_CAR_MOD_SHOP.png/200px-NotificationPicture_CHAR_PROPERTY_CAR_MOD_SHOP.png)
+---| "CHAR_PROPERTY_CAR_SCRAP_YARD" ![](https://wiki.gtanet.work/images/thumb/3/32/NotificationPicture_CHAR_PROPERTY_CAR_SCRAP_YARD.png/200px-NotificationPicture_CHAR_PROPERTY_CAR_SCRAP_YARD.png)
+---| "CHAR_PROPERTY_CINEMA_DOWNTOWN" ![](https://wiki.gtanet.work/images/thumb/a/ac/NotificationPicture_CHAR_PROPERTY_CINEMA_DOWNTOWN.png/200px-NotificationPicture_CHAR_PROPERTY_CINEMA_DOWNTOWN.png)
+---| "CHAR_PROPERTY_CINEMA_MORNINGWOOD" ![](https://wiki.gtanet.work/images/thumb/f/fe/NotificationPicture_CHAR_PROPERTY_CINEMA_MORNINGWOOD.png/200px-NotificationPicture_CHAR_PROPERTY_CINEMA_MORNINGWOOD.png)
+---| "CHAR_PROPERTY_CINEMA_VINEWOOD" ![](https://wiki.gtanet.work/images/thumb/5/56/NotificationPicture_CHAR_PROPERTY_CINEMA_VINEWOOD.png/200px-NotificationPicture_CHAR_PROPERTY_CINEMA_VINEWOOD.png)
+---| "CHAR_PROPERTY_GOLF_CLUB" ![](https://wiki.gtanet.work/images/thumb/0/09/NotificationPicture_CHAR_PROPERTY_GOLF_CLUB.png/200px-NotificationPicture_CHAR_PROPERTY_GOLF_CLUB.png)
+---| "CHAR_PROPERTY_PLANE_SCRAP_YARD" ![](https://wiki.gtanet.work/images/thumb/0/00/NotificationPicture_CHAR_PROPERTY_PLANE_SCRAP_YARD.png/200px-NotificationPicture_CHAR_PROPERTY_PLANE_SCRAP_YARD.png)
+---| "CHAR_PROPERTY_SONAR_COLLECTIONS" ![](https://wiki.gtanet.work/images/thumb/5/5b/NotificationPicture_CHAR_PROPERTY_SONAR_COLLECTIONS.png/200px-NotificationPicture_CHAR_PROPERTY_SONAR_COLLECTIONS.png)
+---| "CHAR_PROPERTY_TAXI_LOT" ![](https://wiki.gtanet.work/images/thumb/5/5d/NotificationPicture_CHAR_PROPERTY_TAXI_LOT.png/200px-NotificationPicture_CHAR_PROPERTY_TAXI_LOT.png)
+---| "CHAR_PROPERTY_TOWING_IMPOUND" ![](https://wiki.gtanet.work/images/thumb/c/cb/NotificationPicture_CHAR_PROPERTY_TOWING_IMPOUND.png/200px-NotificationPicture_CHAR_PROPERTY_TOWING_IMPOUND.png)
+---| "CHAR_PROPERTY_WEED_SHOP" ![](https://wiki.gtanet.work/images/thumb/0/05/NotificationPicture_CHAR_PROPERTY_WEED_SHOP.png/200px-NotificationPicture_CHAR_PROPERTY_WEED_SHOP.png)
+---| "CHAR_RON" ![](https://wiki.gtanet.work/images/thumb/2/21/NotificationPicture_CHAR_RON.png/200px-NotificationPicture_CHAR_RON.png)
+---| "CHAR_SAEEDA" ![](https://wiki.gtanet.work/images/thumb/1/18/NotificationPicture_CHAR_SAEEDA.png/200px-NotificationPicture_CHAR_SAEEDA.png)
+---| "CHAR_SASQUATCH" ![](https://wiki.gtanet.work/images/thumb/6/64/NotificationPicture_CHAR_SASQUATCH.png/200px-NotificationPicture_CHAR_SASQUATCH.png)
+---| "CHAR_SIMEON" ![](https://wiki.gtanet.work/images/thumb/d/df/NotificationPicture_CHAR_SIMEON.png/200px-NotificationPicture_CHAR_SIMEON.png)
+---| "CHAR_SOCIAL_CLUB" ![](https://wiki.gtanet.work/images/thumb/5/5c/NotificationPicture_CHAR_SOCIAL_CLUB.png/200px-NotificationPicture_CHAR_SOCIAL_CLUB.png)
+---| "CHAR_SOLOMON" ![](https://wiki.gtanet.work/images/thumb/5/55/NotificationPicture_CHAR_SOLOMON.png/200px-NotificationPicture_CHAR_SOLOMON.png)
+---| "CHAR_STEVE" ![](https://wiki.gtanet.work/images/thumb/d/d9/NotificationPicture_CHAR_STEVE.png/200px-NotificationPicture_CHAR_STEVE.png)
+---| "CHAR_STEVE_MIKE_CONF" ![](https://wiki.gtanet.work/images/thumb/5/53/NotificationPicture_CHAR_STEVE_MIKE_CONF.png/200px-NotificationPicture_CHAR_STEVE_MIKE_CONF.png)
+---| "CHAR_STEVE_TREV_CONF" ![](https://wiki.gtanet.work/images/thumb/d/dd/NotificationPicture_CHAR_STEVE_TREV_CONF.png/200px-NotificationPicture_CHAR_STEVE_TREV_CONF.png)
+---| "CHAR_STRETCH" ![](https://wiki.gtanet.work/images/thumb/d/d5/NotificationPicture_CHAR_STRETCH.png/200px-NotificationPicture_CHAR_STRETCH.png)
+---| "CHAR_STRIPPER_CHASTITY" ![](https://wiki.gtanet.work/images/thumb/1/10/NotificationPicture_CHAR_STRIPPER_CHASTITY.png/200px-NotificationPicture_CHAR_STRIPPER_CHASTITY.png)
+---| "CHAR_STRIPPER_CHEETAH" ![](https://wiki.gtanet.work/images/thumb/5/59/NotificationPicture_CHAR_STRIPPER_CHEETAH.png/200px-NotificationPicture_CHAR_STRIPPER_CHEETAH.png)
+---| "CHAR_STRIPPER_FUFU" ![](https://wiki.gtanet.work/images/thumb/4/45/NotificationPicture_CHAR_STRIPPER_FUFU.png/200px-NotificationPicture_CHAR_STRIPPER_FUFU.png)
+---| "CHAR_STRIPPER_INFERNUS" ![](https://wiki.gtanet.work/images/thumb/4/4b/NotificationPicture_CHAR_STRIPPER_INFERNUS.png/200px-NotificationPicture_CHAR_STRIPPER_INFERNUS.png)
+---| "CHAR_STRIPPER_JULIET" ![](https://wiki.gtanet.work/images/thumb/1/1a/NotificationPicture_CHAR_STRIPPER_JULIET.png/200px-NotificationPicture_CHAR_STRIPPER_JULIET.png)
+---| "CHAR_STRIPPER_NIKKI" ![](https://wiki.gtanet.work/images/thumb/4/46/NotificationPicture_CHAR_STRIPPER_NIKKI.png/200px-NotificationPicture_CHAR_STRIPPER_NIKKI.png)
+---| "CHAR_STRIPPER_PEACH" ![](https://wiki.gtanet.work/images/thumb/a/a9/NotificationPicture_CHAR_STRIPPER_PEACH.png/200px-NotificationPicture_CHAR_STRIPPER_PEACH.png)
+---| "CHAR_STRIPPER_SAPPHIRE" ![](https://wiki.gtanet.work/images/thumb/5/52/NotificationPicture_CHAR_STRIPPER_SAPPHIRE.png/200px-NotificationPicture_CHAR_STRIPPER_SAPPHIRE.png)
+---| "CHAR_TANISHA" ![](https://wiki.gtanet.work/images/thumb/4/45/NotificationPicture_CHAR_TANISHA.png/200px-NotificationPicture_CHAR_TANISHA.png)
+---| "CHAR_TAXI" ![](https://wiki.gtanet.work/images/thumb/7/7b/NotificationPicture_CHAR_TAXI.png/200px-NotificationPicture_CHAR_TAXI.png)
+---| "CHAR_TAXI_LIZ" ![](https://wiki.gtanet.work/images/thumb/c/cb/NotificationPicture_CHAR_TAXI_LIZ.png/200px-NotificationPicture_CHAR_TAXI_LIZ.png)
+---| "CHAR_TENNIS_COACH" ![](https://wiki.gtanet.work/images/thumb/c/ce/NotificationPicture_CHAR_TENNIS_COACH.png/200px-NotificationPicture_CHAR_TENNIS_COACH.png)
+---| "CHAR_TOW_TONYA" ![](https://wiki.gtanet.work/images/thumb/1/1d/NotificationPicture_CHAR_TOW_TONYA.png/200px-NotificationPicture_CHAR_TOW_TONYA.png)
+---| "CHAR_TRACEY" ![](https://wiki.gtanet.work/images/thumb/d/d9/NotificationPicture_CHAR_TRACEY.png/200px-NotificationPicture_CHAR_TRACEY.png)
+---| "CHAR_TREVOR" ![](https://wiki.gtanet.work/images/thumb/f/fd/NotificationPicture_CHAR_TREVOR.png/200px-NotificationPicture_CHAR_TREVOR.png)
+---| "CHAR_WADE" ![](https://wiki.gtanet.work/images/thumb/7/73/NotificationPicture_CHAR_WADE.png/200px-NotificationPicture_CHAR_WADE.png)
+---| "CHAR_YOUTUBE" ![](https://wiki.gtanet.work/images/thumb/c/c0/NotificationPicture_CHAR_YOUTUBE.png/200px-NotificationPicture_CHAR_YOUTUBE.png)
+
+
+---@alias ESX_AdvancedNotificationIconType number
+---| 1 Chat Box
+---| 2 Email
+---| 3 Add Friend Request
+---| 7 Right Jumping Arrow
+---| 8 RP Icon
+---| 9 $ Icon
+
+---@alias KeyMapping
+---| "DIGITALBUTTON_AXIS" Controller button input as axis input
+---| "GAME_CONTROLLED" Game controlled input
+---| "JOYSTICK_AXIS" Joystick / flight stick axis input
+---| "JOYSTICK_AXIS_NEGATIVE" Joystick / flight stick axis input (always negative)
+---| "JOYSTICK_AXIS_POSITIVE" Joystick / flight stick axis input (always positive)
+---| "JOYSTICK_BUTTON" Joystick / flight stick button input
+---| "JOYSTICK_IAXIS" Joystick / flight stick axis input (inverted)
+---| "JOYSTICK_POV" Joystick / flight stick point of view input
+---| "JOYSTICK_POV_AXIS" Joystick / flight stick point of view axis input
+---| "KEYBOARD" Keyboard input (including the Xbox Controller Chatpad)
+---| "MKB_AXIS" Mouse & keyboard input as axis input
+---| "MOUSE_ABSOLUTEAXIS" Mouse axis input (absolute)
+---| "MOUSE_BUTTON" Mouse button input
+---| "MOUSE_BUTTONANY" Mouse button input (no known difference from MOUSE_BUTTON)
+---| "MOUSE_CENTEREDAXIS" Mouse axis input (centered)
+---| "MOUSE_RELATIVEAXIS" Mouse axis input (relative)
+---| "MOUSE_SCALEDAXIS" Mouse axis input (scaled)
+---| "MOUSE_NORMALIZED" Mouse axis input (normalized)
+---| "MOUSE_WHEEL" Mouse wheel input
+---| "PAD_ANALOGBUTTON" Controller trigger input
+---| "PAD_AXIS" Controller axis input
+---| "PAD_DEBUGBUTTON" Controller button input (debug interface, non functional)
+---| "PAD_DIGITALBUTTON" Controller button input
+---| "PAD_DIGITALBUTTONANY" Controller button input (no known difference from PAD_DIGITALBUTTON)
+---| "TOUCHPAD_ABSOLUTE_AXIS" PS4/5 controller touchpad axis input (absolute)
+---| "TOUCHPAD_CENTERED_AXIS" PS4/5 controller touchpad axis input (centered)
+
+---@alias VehiclePlateType
+---| 3 Blue on White 1
+---| 0 Blue on White 2
+---| 4 Blue on White 3
+---| 2 Yellow on Blue
+---| 1 Yellow on Black
+---| 5 North Yankton
+
+---@class ESX_Vehicle_Properties
+---@field model number The vehicle hash
+---@field plate string Vehicle plate, maximum 8 characters
+---@field plateIndex VehiclePlateType Plate style
+---@field bodyHealth number Body health
+---@field engineHealth number Engine health
+---@field tankHealth number Petrol Tank health
+---@field fuelLevel number Fuel Level
+---@field dirtLevel number Dirtiness level
+---@field color1 number Primary color
+---@field color2 number Secondary color
+---@field pearlescentColor number Pearlescent color
+---@field wheelColor number Wheel color
+---@field dashboardColor number Dashboard color
+---@field interiorColor number Interior color
+---@field wheels number Wheel type
+---@field windowTint number
+---@field neonEnabled table Table with hardcoded four childs for left, back, front & back neons
+---@field neonColor table Packed table with three childs for r,g,b
+---@field extras table Pair table with id as index, and state as value
+---@field tyreSmokeColor table Packed table with three childs for r,g,b
+---@field modSpoiler number
+---@field modFrontBumper number
+---@field modRearBumper number
+---@field modSideSkirt number
+---@field modExhaust number
+---@field modFrame number
+---@field modGrille number
+---@field modHood number
+---@field modFender number
+---@field modRightFender number
+---@field modRoof number
+---@field modEngine number
+---@field modBrakes number
+---@field modTransmission number
+---@field modHorns number
+---@field modSuspension number
+---@field modArmor number
+---@field modTurbo boolean
+---@field modSmokeEnabled boolean
+---@field modXenon boolean
+---@field modFrontWheels number
+---@field modBackWheels number
+---@field modPlateHolder number
+---@field modVanityPlate number
+---@field modTrimA number
+---@field modOrnaments number
+---@field modDashboard number
+---@field modDial number
+---@field modDoorSpeaker number
+---@field modSeats number
+---@field modSteeringWheel number
+---@field modShifterLeavers number
+---@field modAPlate number
+---@field modSpeakers number
+---@field modTrunk number
+---@field modHydrolic number
+---@field modEngineBlock number
+---@field modAirFilter number
+---@field modStruts number
+---@field modArchCover number
+---@field modAerials number
+---@field modTrimB number
+---@field modTank number
+---@field modWindows number
+---@field modLivery number
+
+
+---@alias TextFont
+---| 0 ChaletLondon <br> ![](https://wiki.rage.mp/images/a/a2/120px-chalet-london-nineteen-seventy-upper.png) ![](https://wiki.rage.mp/images/9/99/120px-chalet-london-nineteen-seventy-lower.png) ![](https://wiki.rage.mp/images/d/d1/120px-chalet-london-nineteen-seventy-character.png)
+---| 1 HouseScript <br> ![](https://wiki.rage.mp/images/9/9f/120px-sign-painter-house-script-upper.png) ![](https://wiki.rage.mp/images/1/12/120px-sign-painter-house-script-lower.png) ![](https://wiki.rage.mp/images/4/4c/120px-sign-painter-house-script-character.png)
+---| 2 Monospace <br> ![](https://wiki.rage.mp/images/7/77/120px-Excalibur_Monospace-upper.png) ![](https://wiki.rage.mp/images/a/a5/120px-Excalibur_Monospace-lower.png) ![](https://wiki.rage.mp/images/8/85/120px-Excalibur_Monospace-character.png)
+---| 4 CharletComprimeCologne <br> ![](https://wiki.rage.mp/images/4/4f/120px-chalet-comprime-cologne-seventy-upper.png) ![](https://wiki.rage.mp/images/5/51/120px-chalet-comprime-cologne-seventy-lower.png) ![](https://wiki.rage.mp/images/b/bd/120px-chalet-comprime-cologne-seventy-character.png)
+---| 7 Pricedown <br> ![](https://wiki.rage.mp/images/a/aa/120px-Pricedown-upper.png) ![](https://wiki.rage.mp/images/e/e3/120px-Pricedown-lower.png) ![](https://wiki.rage.mp/images/8/88/120px-Pricedown-character.png)
+
+---@alias VehicleType string
+---| "automobile"
+---| "bike"
+---| "trailer"
+---| "boat"
+---| "heli"
+---| "plane"
+---| "train"
+---| "submarine"
+
+
+---@alias ScaleformMovies string
+---| "AP_ICON"
+---| "CREW_TAG_MOVIECLIP"
+---| "FEED_AWARD"
+---| "FEED_CREW_RANKUP"
+---| "FEED_CREW_TAG"
+---| "FEED_MESSAGE_TEXT"
+---| "FEED_REPLAY"
+---| "FEED_STATS"
+---| "FEED_TICKER"
+---| "FEED_TOOLTIPS"
+---| "FEED_UNLOCK"
+---| "FEED_VERSUS"
+---| "GAME_STREAM"
+---| "GAME_STREAM_ENUMS"
+---| "GTAV_ONLINE"
+---| "INSTRUCTIONAL_BUTTONS"
+---| "LANDING_PAGE"
+---| "LOADINGSCREEN_NEWGAME"
+---| "LOADINGSCREEN_STARTUP"
+---| "MOUSE_EVENTS"
+---| "MOUSE_POINTER"
+---| "ONLINE_POLICIES"
+---| "OPENING_CREDITS"
+---| "PAUSE_MENU_BAR"
+---| "PAUSE_MENU_CALIBRATION"
+---| "PAUSE_MENU_CONFIGURATION_LIST"
+---| "PAUSE_MENU_FREE_MODE"
+---| "PAUSE_MENU_FREEMODE_DETAILS"
+---| "PAUSE_MENU_HEADER"
+---| "PAUSE_MENU_INSTRUCTIONAL_BUTTONS"
+---| "PAUSE_MENU_KEYMAP_CATEGORY"
+---| "PAUSE_MENU_PAGES_KEYMAP"
+---| "PAUSE_MENU_PAGES_SETTINGS"
+---| "PAUSE_MENU_SETTINGS"
+---| "PAUSE_MENU_SP_CONTENT"
+---| "PAUSE_MENU_TEXT_LIST_DOUBLE"
+---| "PAUSE_MENU_VERTICAL_LIST"
+---| "PAUSE_MP_MENU_FRIENDS_LIST"
+---| "PAUSE_MP_MENU_PLAYER_MODEL"
+---| "POPUP_WARNING"
+---| "ROCKSTAR_VERIFIED"
+---| "RP_ICON"
+---| "SOCIAL_CLUB2"
+---| "AIRCRAFT_DIALS"
+---| "AMBIENT_CLIP"
+---| "AMMO_MASTER"
+---| "APP_JOB_LIST"
+---| "APP_MISSION_STATS_VIEW"
+---| "APP_NUMBERPAD"
+---| "APP_SECUROSERV_HACKING"
+---| "APP_TODO_LIST"
+---| "APP_TODO_VIEW"
+---| "APP_TRACKIFY"
+---| "ARCADE_BUSINESS_HUB"
+---| "ARCADE_MANAGEMENT"
+---| "ARENA_CAREER_WALL"
+---| "ARENA_GUN_CAM"
+---| "ARROW_WITH_EVENTS"
+---| "ATM"
+---| "AUDIO_CLIP"
+---| "BANK_JOB_LOGIN"
+---| "BIKER_BUSINESSES"
+---| "BIKER_MISSION_WALL"
+---| "BINOCULARS"
+---| "BLIMP_TEXT"
+---| "BOSS_JOB_LIST"
+---| "BOSS_JOB_LIST_VIEW"
+---| "BREAKING_NEWS"
+---| "CALLSCREEN"
+---| "CAMERA_GALLERY"
+---| "CAMERA_SHUTTER"
+---| "CASINO_HEIST_BOARD_FINALE"
+---| "CASINO_HEIST_BOARD_PREP"
+---| "CASINO_HEIST_BOARD_SETUP"
+---| "CELLPHONE_ALERT_POPUP"
+---| "CELLPHONE_BADGER"
+---| "CELLPHONE_CUTSCENE"
+---| "CELLPHONE_FACADE"
+---| "CELLPHONE_IFRUIT"
+---| "CELLPHONE_PROLOGUE"
+---| "CLIP_EDIT_TIMELINE"
+---| "CLIP_EDIT_TIMELINE_CLICK_REGION"
+---| "CLUBHOUSE_NAME"
+---| "COL_TYPE_BASIC_PAGE"
+---| "COL_TYPE_IMG_PROJ_INFO"
+---| "COL_TYPE_IMG_TWELVE"
+---| "COL_TYPE_LIST"
+---| "COL_TYPE_LIST_HELP"
+---| "COL_TYPE_LIST_LONG_AUDIO"
+---| "COL_TYPE_LIST_PROJECT_SIZE"
+---| "COL_TYPE_LIST_SCROLL"
+---| "COL_TYPE_LIST_SCROLL_AUDIO"
+---| "COL_TYPE_LOAD_PROJ_INFO"
+---| "COL_TYPE_TEXT_PLACEMENT"
+---| "COLOUR_SWITCHER"
+---| "CONTACTLIST"
+---| "CONTROLLER_TEST"
+---| "COUNTDOWN"
+---| "COVERT_OPS"
+---| "CUSTOM_WARNING_SCREEN"
+---| "DASHBOARD"
+---| "DESKTOP_PC"
+---| "DIAL_BANSHEE"
+---| "DIAL_BOBCAT"
+---| "DIAL_CAVALCADE"
+---| "DIAL_COMET"
+---| "DIAL_DUKES"
+---| "DIAL_FACTION"
+---| "DIAL_FELTZER"
+---| "DIAL_FEROCI"
+---| "DIAL_FUTO"
+---| "DIAL_GENTAXI"
+---| "DIAL_INFERNUS"
+---| "DIAL_MAVERICK"
+---| "DIAL_MOTORBIKE"
+---| "DIAL_PEYOTE"
+---| "DIAL_RACE"
+---| "DIAL_RUINER"
+---| "DIAL_SPEEDO"
+---| "DIAL_SULTAN"
+---| "DIAL_SUPERGT"
+---| "DIAL_TAILGATER"
+---| "DIAL_TRUCK"
+---| "DIAL_TRUCKDIGI"
+---| "DIAL_ZTYPE"
+---| "DIGISCANNER"
+---| "DIGITAL_CAMERA"
+---| "DISRUPTION_LOGISTICS"
+---| "DJ"
+---| "DRILLING"
+---| "DRONE_CAM"
+---| "ECG_MONITOR"
+---| "ECOMMERCE_STORE"
+---| "EDITOR_SHUTTER"
+---| "EMAIL_LIST"
+---| "EMAIL_RESPONSE"
+---| "EMAIL_VIEW"
+---| "GRID_LAYOUT"
+---| "HACKER_TRUCK_DESKTOP"
+---| "HACKING_PC"
+---| "HANGAR_CARGO"
+---| "HEIST_AGENCY"
+---| "HEIST_DOCKS"
+---| "HEIST_ENDSCREEN"
+---| "HEIST_FINALE"
+---| "HEIST_JEWELLERY"
+---| "HEIST_PALETO"
+---| "HEIST2_CELEBRATION"
+---| "HELI_CAM"
+---| "HELP_TEXT"
+---| "HELPTEXT"
+---| "HOMEMENU"
+---| "HOMEMENU_BADGER"
+---| "HOMEMENU_FACADE"
+---| "HOMEMENU_IFRUIT"
+---| "HUD_AREA_NAME"
+---| "HUD_AREA_VEHICLE_STREET_NAME"
+---| "HUD_CASH"
+---| "HUD_CASH_CHANGE"
+---| "HUD_CASH_CHANGED"
+---| "HUD_CHIPS"
+---| "HUD_CHIPS_CHANGED"
+---| "HUD_COMPONENT"
+---| "HUD_DIRECTOR_MODE"
+---| "HUD_DISTRICT_NAME"
+---| "HUD_DRUGS_PURSE"
+---| "HUD_FLOATING_HELP_TEXT"
+---| "HUD_FLOATING_HELP_TEXT_1"
+---| "HUD_FLOATING_HELP_TEXT_2"
+---| "HUD_HELP_TEXT"
+---| "HUD_HELP_TEXT_BIG"
+---| "HUD_MISSION_PASSED_MESSAGE"
+---| "HUD_MP_CASH"
+---| "HUD_MP_INVENTORY"
+---| "HUD_MP_MESSAGE"
+---| "HUD_MULTIPLAYER_CHAT"
+---| "HUD_PLAYER_SWITCH_ALERT"
+---| "HUD_RADIO_STATIONS_WHEEL"
+---| "HUD_RADIO_WHEEL"
+---| "HUD_RETICLE"
+---| "HUD_SAVING"
+---| "HUD_STREET_NAME"
+---| "HUD_SUBTITLE_TEXT"
+---| "HUD_SUBTITLE_TEXT_BIG"
+---| "HUD_VEHICLE_NAME"
+---| "HUD_WANTED_STARS"
+---| "HUD_WEAPON_ICON"
+---| "HUD_WEAPON_WHEEL"
+---| "HUD_WEAPON_WHEEL_STATS"
+---| "IAA_HEIST_BOARD"
+---| "IMPORT_EXPORT_WAREHOUSE"
+---| "JOB_LIST"
+---| "LESTER_HACK_PC"
+---| "LETTER_SCRAPS"
+---| "MARKER"
+---| "MARKER_LEFT"
+---| "MARKER_RIGHT"
+---| "MESSAGE_LIST"
+---| "MESSAGE_VIEW"
+---| "MIDSIZED_MESSAGE"
+---| "MISSION_COMPLETE"
+---| "MISSION_QUIT"
+---| "MISSION_REPEAT_LIST"
+---| "MISSION_TARGET_COMPLETE"
+---| "MORGUE_LAPTOP"
+---| "MP_AWARD_BASE"
+---| "MP_AWARD_FREEMODE"
+---| "MP_BIG_MESSAGE_FREEMODE"
+---| "MP_BOUNTY_BOARD"
+---| "MP_CAR_STATS"
+---| "MP_CELEBRATION"
+---| "MP_CORONA_PLAYER_INFO"
+---| "MP_CREW_TAG"
+---| "MP_FREEMODE_CHECKPOINT_BASE"
+---| "MP_FREEMODE_PLAYER_LIST"
+---| "MP_GAMER_INFO"
+---| "MP_MATCHMAKING_CARD"
+---| "MP_MATCHMAKING_SELECTOR"
+---| "MP_MATCHMAKING_VEHICLE_INFO"
+---| "MP_MENU_GLARE"
+---| "MP_MISSION_NAME_FREEMODE"
+---| "MP_MM_CARD_FREEMODE"
+---| "MP_NEXT_JOB_SELECTION"
+---| "MP_PLAYER_CARD"
+---| "MP_RANK_BAR"
+---| "MP_RESULTS_PANEL"
+---| "MP_SPECTATOR_CARD"
+---| "MP_SPECTATOR_OVERLAY"
+---| "MP_UNLOCKS_FREEMODE"
+---| "MUGSHOT_BOARD"
+---| "MULTIPLAYER_CHAT"
+---| "NEW_EDITOR"
+---| "NEW_HUD"
+---| "NIGHTCLUB"
+---| "OBSERVATORY_SCOPE"
+---| "OPEN_WHEEL_HEALTH_INDICATOR"
+---| "ORBITAL_CANNON_CAM"
+---| "ORBITAL_CANNON_MAP"
+---| "ORGANISATION_NAME"
+---| "OVERVIEW_BACKGROUND"
+---| "OVERVIEW_SCROLLER"
+---| "PARTY_BUS"
+---| "PAUSE_MENU_AWARDS"
+---| "PAUSE_MENU_BODY_CONFIG_LIST"
+---| "PAUSE_MENU_CHARACTER_CARD"
+---| "PAUSE_MENU_CHARACTER_SELECT"
+---| "PAUSE_MENU_CREW_COMPARISON_CARD"
+---| "PAUSE_MENU_CREW_RANKS"
+---| "PAUSE_MENU_CREWS_CARD"
+---| "PAUSE_MENU_CREWS_LIST"
+---| "PAUSE_MENU_DIALOGUE_LIST"
+---| "PAUSE_MENU_FEED"
+---| "PAUSE_MENU_FREEMODE_MAP"
+---| "PAUSE_MENU_FRIENDS_STATS_SP"
+---| "PAUSE_MENU_GALLERY"
+---| "PAUSE_MENU_HAIR_COLOUR_LIST"
+---| "PAUSE_MENU_HERITAGE_CARD"
+---| "PAUSE_MENU_MAP"
+---| "PAUSE_MENU_MISSION_HELP_LIST"
+---| "PAUSE_MENU_MISSION_REPLAY_CARD"
+---| "PAUSE_MENU_NEWSWIRE"
+---| "PAUSE_MENU_PAGES_AWARDS"
+---| "PAUSE_MENU_PAGES_CHAR_MOM_DAD"
+---| "PAUSE_MENU_PAGES_CHAR_SELECT"
+---| "PAUSE_MENU_PAGES_CORONA"
+---| "PAUSE_MENU_PAGES_CORONA_LOBBY"
+---| "PAUSE_MENU_PAGES_CORONA_PLAYERS"
+---| "PAUSE_MENU_PAGES_CORONA_RACE"
+---| "PAUSE_MENU_PAGES_CREWS"
+---| "PAUSE_MENU_PAGES_FRIENDS"
+---| "PAUSE_MENU_PAGES_FRIENDS_MP"
+---| "PAUSE_MENU_PAGES_GALLERY"
+---| "PAUSE_MENU_PAGES_GAME"
+---| "PAUSE_MENU_PAGES_INFO"
+---| "PAUSE_MENU_PAGES_MAP"
+---| "PAUSE_MENU_PAGES_MISSIONCREATOR"
+---| "PAUSE_MENU_PAGES_SAVE"
+---| "PAUSE_MENU_PAGES_STATS"
+---| "PAUSE_MENU_PAGES_STORE"
+---| "PAUSE_MENU_PAGES_WEAPONS"
+---| "PAUSE_MENU_REPLAY_LIST"
+---| "PAUSE_MENU_SPCHAR_OVERLAYS"
+---| "PAUSE_MENU_STATS_LIST"
+---| "PAUSE_MENU_STATS_VERTICAL_LIST"
+---| "PAUSE_MENU_STORE_NEWS"
+---| "PAUSE_MENU_TEXT_LIST_FULL"
+---| "PAUSE_MENU_WEAPONS"
+---| "PAUSE_MP_MENU_PLAYER_COMPARISON_CARD"
+---| "PLAYBACK_PANEL"
+---| "PLAYER_NAME"
+---| "PLAYER_SWITCH"
+---| "PLAYER_SWITCH_STATS_PANEL"
+---| "PLAYHEAD_MARKER"
+---| "POWER_PLAY"
+---| "POWER_PLAY_BIKER"
+---| "POWER_PLAY_DAY_NIGHT"
+---| "POWER_PLAY_GENERIC"
+---| "POWER_PLAY_SPECIAL_RACES"
+---| "POWER_PLAY_TURF"
+---| "POWER_PLAY_VEHICLE"
+---| "PSYCHOLOGY_REPORT"
+---| "RACE_MESSAGE"
+---| "RACE_POSITION"
+---| "RAMPAGE"
+---| "REMOTE_SNIPER_HUD"
+---| "REMOTE_SNIPER_LOADING"
+---| "ROUND_DECIMAL_PLACES"
+---| "SAVING_FOOTER"
+---| "SCORE_CLIP"
+---| "SECURITY_CAM"
+---| "SECURITY_CAMERA"
+---| "SECUROSERV"
+---| "SETTINGS"
+---| "SHOP_MENU"
+---| "SHOP_MENU_DLC"
+---| "SHUTTER"
+---| "SLOT_MACHINE"
+---| "SOCIAL_CLUB_TV"
+---| "SP_PLAYER_CARD"
+---| "SP_PLAYER_COMPARISON_CARD"
+---| "SPEED_INDICATOR"
+---| "SPLASH_TEXT"
+---| "SPPED_INDICATOR"
+---| "STAGE"
+---| "STAGE_CLIP"
+---| "STARTER_PACK_BROWSER"
+---| "STORE_BACKGROUND"
+---| "STORE_BLACKOUT"
+---| "STORE_CONTENTIMAGE_LIST"
+---| "STORE_DETAILS_LIST"
+---| "STORE_VERTICAL_LIST"
+---| "STRENGTH_TEST_SCORE"
+---| "STUNT_JUMPS"
+---| "SUB_CAM"
+---| "SUB_PC"
+---| "TATTOO_BUTTONS"
+---| "TAXI_DISPLAY"
+---| "TEETH_PULLING"
+---| "TEXT_CANVAS"
+---| "TEXT_CLIP"
+---| "TEXT_INPUT_BOX"
+---| "TEXT_MESSAGE_LIST"
+---| "TEXT_MESSAGE_VIEW"
+---| "TEXTFIELD"
+---| "THUMBNAIL_CLIP"
+---| "TIMECODE_MC"
+---| "TIMECODE_NEW"
+---| "TIMELINE_PANEL"
+---| "TRAFFIC_CAM"
+---| "TURRET_CAM"
+---| "TV_FRAME"
+---| "VAULT_DRILL"
+---| "VAULT_LASER"
+---| "VIDEO_BUTTON_TYPES"
+---| "VIDEO_CLIP"
+---| "WAREHOUSE"
+---| "WATERMARK"
+---| "WIND_METER"
+---| "XYZ"
+---| "YACHT_NAME"
+---| "YACHT_NAME_STERN"
+---| "YOGA_BUTTONS"
+---| "DIGITAL_SAFE_DISPLAY"
+---| "ISLAND_HEIST_BOARD"
+---| "SUBMARINE_MISSILES"
+---| "HACKING_MESSAGE"
+---| "HEIST_CELEBRATION"
+---| "HEIST_MP"
+---| "HEIST_PRE"
+---| "HEISTMAP_MP"
+---| "INTERIORS"
+---| "AXE_OF_FURY"
+---| "DANCER"
+---| "DARTS_SCOREBOARD"
+---| "DARTS_SCOREBOARD_BIKER"
+---| "DONT_CROSS_THE_LINE"
+---| "GOLF"
+---| "GOLF_FLOATING_UI"
+---| "HORSE_RACING_CONSOLE"
+---| "HORSE_RACING_WALL"
+---| "SC_LEADERBOARD"
+---| "SPIN_THE_WHEEL"
+---| "TENNIS"
+---| "FOG_MC"
+---| "GOLF_COURSE"
+---| "GREEN_AND_FRIENDLY"
+---| "GREEN_AND_NET_PLAYER1"
+---| "GREEN_AND_NET_PLAYER2"
+---| "GREEN_AND_NET_PLAYER3"
+---| "MINIMAP"
+---| "MINIMAP_MAIN_MAP"
+---| "NET_PLAYER1_AND_NET_PLAYER2"
+---| "NET_PLAYER1_AND_NET_PLAYER3"
+---| "TXD_MC"
+---| "GAMEPAD_CALIBRATION"
+---| "LANGUAGE_SELECT"
+---| "PC_KEY"
+---| "TATTOO_KEYS"
+---| "TEXTBTN_996"
+---| "TEXTBTN_997"
+---| "TEXTBTN_999"
+---| "FORECLOSURES_MAZE_D_BANK_COM"
+---| "FORECLOSURES_MAZE_D_BANK_COM_WRAPPER"
+---| "FORMAT_COLUMN"
+---| "GENERIC_WEBSITE_SCRIPT"
+---| "MYSTOCKS_BUTTON"
+---| "STOCKLIST_BUTTON"
+---| "TICKERTAPE"
+---| "WEB_BROWSER"
+---| "WEB_BROWSER_PARENT"
+---| "WWW_ACCEPT_D_THE_D_CHAOS_COM"
+---| "WWW_ARENAWAR_TV"
+---| "WWW_BAWSAQ_COM"
+---| "WWW_BENNYSORIGINALMOTORWORKS_COM"
+---| "WWW_BLEETER_BIZ"
+---| "WWW_CASHFORDEADDREAMS_COM"
+---| "WWW_CLASSICVINEWOOD_COM"
+---| "WWW_CREDITCARDCONSOLIDATIONKINGS_COM"
+---| "WWW_CULTSTOPPERS_COM"
+---| "WWW_DOCKTEASE_COM"
+---| "WWW_DOCKTEASE_COM_PARENT"
+---| "WWW_DYNASTY8EXECUTIVEREALTY_COM"
+---| "WWW_DYNASTY8REALESTATE_COM"
+---| "WWW_EGOCHASERENERGYBAR_COM"
+---| "WWW_ELECTROTOKESYSTEM_COM"
+---| "WWW_ELITASTRAVEL_COM"
+---| "WWW_EPSILONPROGRAM_COM"
+---| "WWW_EYEFIND_INFO"
+---| "WWW_FAMEORSHAME_NET"
+---| "WWW_FLEECA_COM"
+---| "WWW_HUSHSMUSH_COM"
+---| "WWW_IWILLSURVIVEITALL_COM"
+---| "WWW_JACKHOWITZER_COM"
+---| "WWW_JOCKCRANLEY_COM"
+---| "WWW_KUNGFURAINBOWLAZERFORCE_COM"
+---| "WWW_LCN_D_EXCHANGE_COM"
+---| "WWW_LEGENDARYMOTORSPORT_NET"
+---| "WWW_LEGENDARYMOTORSPORT_NET_WRAPPER"
+---| "WWW_LENNYAVERY_D_REALTY_COM"
+---| "WWW_LIFEINVADER_COM"
+---| "WWW_MAZE_D_BANK_COM"
+---| "WWW_MINISTERINMINUTES_COM"
+---| "WWW_MONETARYSCIENCE_US"
+---| "WWW_MYDIVINEWITHIN_COM"
+---| "WWW_PANDMCYCLES_COM"
+---| "WWW_PRINCESSROBOTBUBBLEGUM_COM"
+---| "WWW_PROPOSITION43_ORG"
+---| "WWW_PSYCHICSHOUTOUT_COM"
+---| "WWW_REPUBLICANSPACERANGERS_COM"
+---| "WWW_RIGHTEOUSSLAUGHTER7_COM"
+---| "WWW_SANANDREASDMV_COM"
+---| "WWW_SAWATERANDPOWER_COM"
+---| "WWW_SIXFIGURETEMPS_COM"
+---| "WWW_SOUTHERNSANANDREASSUPERAUTOS_COM"
+---| "WWW_SOUTHERNSANANDREASSUPERAUTOS_COM_WRAPPER"
+---| "WWW_SOUTHERNSANANDREASSUPERAUTOS_COM_WRAPPER_WRAPPER"
+---| "WWW_TACO_D_BOMB_COM"
+---| "WWW_THEBANKOFLIBERTY_COM"
+---| "WWW_THECHILDRENOFTHEMOUNTAIN_COM"
+---| "WWW_THEDIAMONDCASINOANDRESORT_COM"
+---| "WWW_THEINTERNETISAHELLHOLE_COM"
+---| "WWW_THEPOWCLEANSE_COM"
+---| "WWW_THEREALITYMILL_COM"
+---| "WWW_TOESHOESUSA_COM"
+---| "WWW_VINEWOODLOGLINEGENERATOR_COM"
+---| "WWW_VISITTHEALAMOSEA_COM"
+---| "WWW_WARSTOCK_D_CACHE_D_AND_D_CARRY_COM"
+---| "WWW_WARSTOCK_D_CACHE_D_AND_D_CARRY_COM_WRAPPER"
+---| "WWW_WHOKILLEDLEONORAJOHNSON_COM"
+---| "WWW_YOURDEADFAMILY_COM"
+---| "WWW_YOURNEWBABYSNAME_COM"

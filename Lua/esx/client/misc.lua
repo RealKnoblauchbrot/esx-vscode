@@ -14,10 +14,9 @@
 ---@field dict string
 ---@field lib string
 
----@alias ESX_TextUI_Types string
----| "error"
----| "success"
----| "info"
+---@alias ESX_TextUI_Types "error" | "success" | "info"
+
+---@alias ESX_NotificationTypes "sucess" | "error" | "info" | string
 
 ---@alias ESX_AdvancedNotificationDictionary string
 ---| "CHAR_ABIGAIL" ![](https://wiki.gtanet.work/images/thumb/2/26/NotificationPicture_CHAR_ABIGAIL.png/200px-NotificationPicture_CHAR_ABIGAIL.png)

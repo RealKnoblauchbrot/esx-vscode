@@ -6,14 +6,12 @@ import { extensionId } from "./extension";
 
 function getExtensionPath(extensionId: string) {
   let path = !process.env.VSCODE_DEBUG_MODE ? __dirname.slice(0, __dirname.length - 5) : vscode.extensions.getExtension(extensionId)?.extensionPath;
-  console.log("current path: ", path);
   return path;
 }
 
 export async function setExternalLibrary(folder: string, enable: boolean) {
   const extensionPath = getExtensionPath(extensionId);
   const folderPath = pathJoin(extensionPath!, "Lua", folder);
-  console.log("library folder", folderPath);
   const config = vscode.workspace.getConfiguration("Lua");
   const library: string[] | undefined = config.get("workspace.library");
 

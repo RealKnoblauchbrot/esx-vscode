@@ -13,13 +13,17 @@
   "publisher": "Knoblauchbrot",
   "categories": [
     "Linters",
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "keywords": [
     "Lua",
     "FiveM",
     "FiveM Framework",
     "ESX",
+    "ESX Snippets",
+    "Snippets",
+    "fivem-esx",
     "IntelliSense"
   ],
   "activationEvents": [
@@ -30,13 +34,19 @@
     "configuration": {
       "title": "FivemESX",
       "properties": {
-        "fivem-esx.ox_inventory": {
+        "esx-vscode.ox_inventory": {
           "type": "boolean",
           "default": false,
           "description": "Enable Ox Inventory classes and types"
         }
       }
-    }
+    },
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./Snippets/esx-snippets.json"
+      }
+    ]
   },
   "icon": "esx.jpg",
   "scripts": {

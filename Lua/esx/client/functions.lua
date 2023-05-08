@@ -54,15 +54,15 @@ function ESX.SetPlayerData(key, val) end
 --<h3>(Clientside Only)</h3>
 --Show progressbar with specified message
 ---@param message string Message that should be displayed 
----@param length number The time the progressbar should take in milliseconds
+---@param length? number The time the progressbar should take in milliseconds
 ---@param Options? ESX_ProgressbarOptions
 function ESX.Progressbar(message, length, Options) end
 
 --<h3>(Clientside Only)</h3>
 --Shows a notification to the player.
+---@param type? ESX_NotificationTypes What type the notification would be (default: "info")
+---@param length? number For how long the notification should show (default: 3000)
 ---@param message string The message to display
----@param type string What type the notification would be (default: "info")
----@param length number For how long the notification should show (default: 3000)
 function ESX.ShowNotification(message, type, length) end
 
 --<h3>(Clientside Only)</h3>

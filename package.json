@@ -2,7 +2,7 @@
   "name": "esx-vscode",
   "displayName": "ESX VSCode",
   "description": "Support for the ESX Framework",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "engines": {
     "vscode": "^1.78.0"
   },

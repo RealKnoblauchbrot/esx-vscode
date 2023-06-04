@@ -13,7 +13,13 @@ function ESX.TextUI(message, type) end
 function ESX.HideUI() end
 
 exports["esx_textui"] = {
-  TextUI = ESX.TextUI,
+  --<h3>(Clientside Only)</h3>
+  ---Show TextUI
+  ---@param message string
+  ---@param type ESX_TextUI_Types
+  TextUI = function(_, message, type) end,
 
-  HideUI = ESX.HideUI
+  --<h3>(Clientside Only)</h3>
+  --Hide TextUI
+  HideUI = function () end
 }

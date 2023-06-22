@@ -9,7 +9,7 @@
 
 exports["esx_boat"] = {
 
-  ---Get all Boat Garages
+  --Get all Boat Garages
   ---@return table<string, BoatGarage>[]
   getGarages = function ()
     return garages

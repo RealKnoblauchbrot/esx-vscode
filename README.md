@@ -11,4 +11,5 @@ Optional but highly suggested, adds linting for FiveM Natives and removes undefi
 ## Acknowledgements
  - [Lua Language Server](https://github.com/LuaLS/lua-language-server)
  - [ESX Documentation](https://documentation.esx-framework.org/)
+ - [OX Documentation](https://overextended.dev/)
 

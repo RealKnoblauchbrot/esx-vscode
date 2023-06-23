@@ -7,6 +7,14 @@
 		"description": "Import the ESX Object"
 	},
 
+  "Import OxMySQL": {
+    "prefix": "Import OxMySQL",
+    "body": [
+      "'@oxmysql/lib/MySQL.lua',"
+    ],
+    "description": "Import the MySQL Object"
+  },
+
   "Alternative ESX Import": {
     "prefix": "Import ESX using exports",
     "body": [

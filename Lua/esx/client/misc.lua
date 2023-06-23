@@ -14,6 +14,20 @@
 ---@field dict string
 ---@field lib string
 
+---@class ESX_Context_Element
+---@field unselectable boolean
+---@field disabled boolean
+---@field icon string Fontawesome Icon or "" to hide icon 
+---@field title string Title of element
+---@field description string Discription of the element
+---@field input boolean Allow Input
+---@field inputType "radio" | "number" | "text" Type of input
+---@field inputPlaceholder string Placeholder to show in Input
+---@field inputValue number|string Default Value
+---@field inputMin number Minimum Value. Only works with type "number"
+---@field inputMax number Maximum Value. Only works with type "number"
+---@field name string Input identifier
+
 ---@alias ESX_AdvancedNotificationDictionary string
 ---| "CHAR_ABIGAIL" ![](https://wiki.gtanet.work/images/thumb/2/26/NotificationPicture_CHAR_ABIGAIL.png/200px-NotificationPicture_CHAR_ABIGAIL.png)
 ---| "CHAR_ALL_PLAYERS_CONF" ![](https://wiki.gtanet.work/images/thumb/7/72/NotificationPicture_CHAR_ALL_PLAYERS_CONF.png/200px-NotificationPicture_CHAR_ALL_PLAYERS_CONF.png)

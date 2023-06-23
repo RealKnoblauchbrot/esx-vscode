@@ -167,3 +167,11 @@
 ---| 30 **Only MK2 Weapons**<br> Metallic White & Aqua ![Image of the color getting Shown](https://wiki.rage.mp/images/thumb/3/34/Mk2_wtint_30.jpg/200px-Mk2_wtint_30.jpg)
 ---| 31 **Only MK2 Weapons**<br> Metallic Red & Yellow ![Image of the color getting Shown](https://wiki.rage.mp/images/thumb/2/2a/Mk2_wtint_31.jpg/200px-Mk2_wtint_31.jpg)
 
+exports["es_extended"] = {
+
+  --Get ESX Object
+  ---@return ESX
+  getSharedObject = function()
+    return ESX
+  end
+}

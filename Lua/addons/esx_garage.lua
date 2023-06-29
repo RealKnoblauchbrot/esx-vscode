@@ -1,8 +1,8 @@
 ---@meta
 
 ---@class Garage
----@field EntryPoint Coordinate
----@field SpawnPoint Coordinate
+---@field EntryPoint vector3
+---@field SpawnPoint vector3
 ---@field Sprite number
 ---@field Scale number
 ---@field Colour number
@@ -10,8 +10,8 @@
 ---@package
 
 ---@class Impound
----@field GetOutPoint Coordinate
----@field SpawnPoint Coordinate
+---@field GetOutPoint vector3
+---@field SpawnPoint vector3
 ---@field Sprite number
 ---@field Scale number
 ---@field Colour number

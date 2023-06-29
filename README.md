@@ -5,7 +5,7 @@ A Visual Studio Code Exentention to help Code with the ESX Framework
 
 Dependency: [Sumneko's Language Server](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
 
-Optional but highly suggested, adds linting for FiveM Natives and removes undefined Global Variable Warnings: 
+Adds linting for FiveM Natives and removes undefined Global Variable Warnings: 
 [cfxlua-vscode](https://marketplace.visualstudio.com/items?itemName=overextended.cfxlua-vscode)
 
 ## Acknowledgements

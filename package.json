@@ -1,8 +1,8 @@
 {
   "name": "esx-vscode",
   "displayName": "ESX VSCode",
-  "description": "Support for the ESX Framework",
-  "version": "2.0.1",
+  "description": "Support for the ESX Framework, popular addons and libraries",
+  "version": "2.1.4",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -34,11 +34,26 @@
     "configuration": {
       "title": "FivemESX",
       "properties": {
-        "fivem-esx.esx-addons": {
-          "title": "ESX Addons",
+        "fivem-esx.libraries": {
+          "title": "Libraries",
           "type": "object",
           "order": 1,
-          "description": "Enable support and linting for esx addons",
+          "description": "Enable support and linting for Libraries",
+          "properties": {
+            "oxmysql": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "default": {
+            "oxmysql": true
+          }
+        },
+        "fivem-esx.addons": {
+          "title": "Addons",
+          "type": "object",
+          "order": 2,
+          "description": "Enable support and linting for addons",
           "properties": {
             "esx_boat": {
               "type": "boolean"
@@ -57,6 +72,12 @@
             },
             "esx_textui": {
               "type": "boolean"
+            },
+            "ox_inventory": {
+              "type": "boolean"
+            },
+            "pma-voice": {
+              "type": "boolean"
             }
           },
           "additionalProperties": false,
@@ -66,9 +87,12 @@
             "esx_garage": false,
             "esx_notify": true,
             "esx_progressbar": false,
-            "esx_textui": true
+            "esx_textui": true,
+            "pma-voice": true,
+            "ox_inventory": false
           }
         }
+        
       }
     },
     "snippets": [
@@ -107,6 +131,7 @@
     "@vscode/test-electron": "^2.3.0"
   },
   "extensionDependencies": [
-    "sumneko.lua"
+    "sumneko.lua",
+    "overextended.cfxlua-vscode"
   ]
 }

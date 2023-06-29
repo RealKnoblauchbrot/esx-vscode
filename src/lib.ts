@@ -43,25 +43,17 @@ export async function setExternalLibrary(folder: string, enable: boolean) {
   }
 }
 
-export async function enableLibraries() {
-  await setExternalLibrary("misc", true)
-  await setExternalLibrary("esx", true)
+export async function enableLinting(enable: boolean) {
+  await setExternalLibrary("misc", enable)
+  await setExternalLibrary("esx", enable)
 
   const extensionConfig = vscode.workspace.getConfiguration();
-  const addons: object = Object(extensionConfig.get("fivem-esx.esx-addons"));
+  const addons: object = Object(extensionConfig.get("fivem-esx.addons"));
   for (const [key, value] of Object.entries(addons)) {
-    await setExternalLibrary(`addons/${key}.lua`, value)
+    await setExternalLibrary(`addons/${key}.lua`, value ? enable : false)
   }
-} 
-
-// Doesn't seem to be able to edit the config when stopping vscode?
-export function disableLbraries() {
-  setExternalLibrary("misc", false)
-  setExternalLibrary("esx", false)
-
-  const extensionConfig = vscode.workspace.getConfiguration();
-  const addons: object = Object(extensionConfig.get("fivem-esx.esx-addons"));
-  for (const [key, value] of Object.entries(addons)) {
-    setExternalLibrary(`addons/${key}.lua`, false)
+  const libraries: object = Object(extensionConfig.get("fivem-esx.libraries"));
+  for (const [key, value] of Object.entries(libraries)) {
+    await setExternalLibrary(`libraries/${key}.lua`, value ? enable : false)
   }
 }

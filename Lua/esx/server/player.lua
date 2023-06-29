@@ -23,11 +23,12 @@ function ExtendedPlayer.triggerEvent(eventName, ...) end
 -- 	xPlayer.setCoords({x = 600.0, y = 112.4, z = 65.5})
 -- end, false)
 --```
----@param coords Coordinate The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
+---@param coords vector3 The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
 function ExtendedPlayer.setCoords(coords) end
 
 -- Should not be used
--- function ExtendedPlayer.updateCoords() end
+-- Updates the player's current coords
+function ExtendedPlayer.updateCoords() end
 
 --Returns the player's current coordinates on the server. The optional boolean useVector argument is for returning a vector3 type. Keep in mind that the coords sync interval can be adjusted in the configuration file in case you want to get precise player coords. <br> Example:
 --```lua 
@@ -125,7 +126,7 @@ end
 --
 --The returned table contains an index-value table of all accounts, and for each child there is a key-value tabl with the following content:
 ---@param minimal? boolean Only get Account money
----@return table<string, ESX_Account>
+---@return table<string, ESX_Account|number>
 function ExtendedPlayer.getAccounts(minimal)
   return ExtendedPlayer.accounts
 end
@@ -324,9 +325,10 @@ end
 --Checks if the player has the specified item, if they do, it will return item and item count
 ---@param item string Item name
 ---@param metadata? any Item metadata
----@return boolean hasItem 
+---@return boolean|ESX_Item hasItem false if item not found or item object
+---@return nil|number itemCount nil if item not found or item count
 function ExtendedPlayer.hasItem(item, metadata)
-  return hasItem
+  return hasItem, itemCount
 end
 
 --Returns the loadout Key and a weapon object for the weapon if the player has it.
@@ -366,7 +368,7 @@ function ExtendedPlayer.showHelpNotification(msg, thisFrame, beep, duration) end
 --Get player meta
 ---@param index string
 ---@param subIndex string
----@return string|table
+---@return number|string|table
 function ExtendedPlayer.getMeta(index, subIndex)
   return meta
 end

@@ -7,7 +7,7 @@ ESX.OneSync = {}
 --<h3>(Serverside Only)</h3>
 --Get All Players in radius
 ---@param source vector3|number playerId or vector3 coordinates
----@param maxDistance number radius
+---@param maxDistance? number radius of search. Default: 100
 ---@param ignore? table playerIds to ignore, where the key is playerId and value is true
 ---@return table players Players inside the specified radius
 function ESX.OneSync.GetPlayersInArea(source, maxDistance, ignore)
@@ -17,7 +17,7 @@ end
 --<h3>(Serverside Only)</h3>
 --Get Closest Player in Radius
 ---@param source vector3|number playerId or vector3 coordinates
----@param maxDistance number radius
+---@param maxDistance? number radius of search. Default: 100
 ---@param ignore? table playerIds to ignore, where the key is playerId and value is true
 ---@return unknown
 function ESX.OneSync.GetClosestPlayer(source, maxDistance, ignore)

@@ -28,6 +28,9 @@
 ---@field inputMax number Maximum Value. Only works with type "number"
 ---@field name string Input identifier
 
+---@class ESX_PlayerData_Client: ESX_PlayerData
+---@field ped number Player's Ped Handle
+
 ---@alias ESX_AdvancedNotificationDictionary string
 ---| "CHAR_ABIGAIL" ![](https://wiki.gtanet.work/images/thumb/2/26/NotificationPicture_CHAR_ABIGAIL.png/200px-NotificationPicture_CHAR_ABIGAIL.png)
 ---| "CHAR_ALL_PLAYERS_CONF" ![](https://wiki.gtanet.work/images/thumb/7/72/NotificationPicture_CHAR_ALL_PLAYERS_CONF.png/200px-NotificationPicture_CHAR_ALL_PLAYERS_CONF.png)

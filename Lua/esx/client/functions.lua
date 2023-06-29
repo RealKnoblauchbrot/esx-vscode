@@ -2,7 +2,7 @@
 
 ---[ESX Documentation](https://documentation.esx-framework.org/legacy/Client/)
 ---@class ESX
----@field PlayerData ESX_PlayerData
+---@field PlayerData ESX_PlayerData_Client
 ---@field PlayerLoaded boolean
 ESX = {}
 
@@ -31,7 +31,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Gets player data.
----@return table
+---@return ESX_PlayerData_Client
 function ESX.GetPlayerData()
   return ESX.PlayerData
 end
@@ -74,7 +74,7 @@ function ESX.ShowHelpNotification(msg, thisFrame, beep, duration) end
 --<h3>(Clientside Only)</h3>
 --Shows a help notification with a message. TThese help notification support displaying button inputs, see this [list](https://docs.fivem.net/docs/game-references/controls/)
 ---@param msg string
----@param coords Coordinate
+---@param coords vector3
 function ESX.ShowFloatingHelpNotification(msg, coords) end
 
 --<h3>(Clientside Only)</h3>
@@ -204,7 +204,7 @@ end
 --Teleports an entity.
 ---@async
 ---@param entity number The entity to teleport
----@param coords Coordinate The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
+---@param coords vector3 The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
 ---@param cb? function The called function when the entity has been teleported
 function ESX.Game.Teleport(entity, coords, cb) end
 
@@ -212,7 +212,7 @@ function ESX.Game.Teleport(entity, coords, cb) end
 --Spawns an object visible to everyone on the server if not specified else.
 ---@async
 ---@param object string|number You can either specify a model, for example prop_cs_cuffs_01, or a object hash
----@param coords Coordinate The coords where the object should be spawned. You can also parse an vector type without any issues
+---@param coords vector3 The coords where the object should be spawned. You can also parse an vector type without any issues
 ---@param cb? fun(obj: number) The returned function when the object has been spawned. The invoked function has one argument, which is the object handle.
 ---@param networked? boolean Should be networked to all players
 function ESX.Game.SpawnObject(object, coords, cb, networked) end
@@ -221,7 +221,7 @@ function ESX.Game.SpawnObject(object, coords, cb, networked) end
 --Spawns a local object, which is only visible to the local player and no one else.
 ---@async
 ---@param object string|number 	You can either specify a model, for example prop_cs_cuffs_01, or a object hash
----@param coords Coordinate The coords where the object should be spawned. You can also parse an vector type without any issues
+---@param coords vector3 The coords where the object should be spawned. You can also parse an vector type without any issues
 ---@param cb? fun(obj: number) The returned function when the object has been spawned. The invoked function has one argument, which is the object handle.
 function ESX.Game.SpawnLocalObject(object, coords, cb)
   ESX.Game.SpawnObject(object, coords, cb, false)
@@ -241,7 +241,7 @@ function ESX.Game.DeleteObject(object) end
 --Spawns an vehicle visible to everyone on the server if not specified else.
 ---@async
 ---@param vehicle string|number You can either specify a model, for example blista, or a vehicle hash.
----@param coords Coordinate The coords where the vehicle should be spawned. You can also parse an vector type without any issues
+---@param coords vector3 The coords where the vehicle should be spawned. You can also parse an vector type without any issues
 ---@param heading number The heading of the spawned vehicle, must contain a decimal
 ---@param cb? fun(vehicle: number) The returned function when the vehicle has been spawned. The invoked function has one argument, which is the vehicle handle
 ---@param networked? boolean
@@ -299,7 +299,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Returns the closest object handle, and distance to the object.
----@param coords? Coordinate Coords to search at. (Default: Player postion)
+---@param coords? vector3 Coords to search at. (Default: Player postion)
 ---@param modelFilter? table Enables whitelist mode for getting closest object. The table must be key-value where the key is the model hash, and value set to true.
 ---@return number closestObject Handle of closest object
 ---@return number closestObjectDistance Distance of closest object
@@ -309,7 +309,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Returns the closest ped handle, and distance to the ped.
----@param coords? Coordinate Coords to search at. (Default: Player postion)
+---@param coords? vector3 Coords to search at. (Default: Player postion)
 ---@param modelFilter? table Enables whitelist mode for getting closest ped. The table must be key-value where the key is the model hash, and value set to true.
 ---@return number closestPed Handle of closest entity
 ---@return number closestPedDistance Distance of closest entity
@@ -319,7 +319,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Gets the closest player client id, and distance to the player.
----@param coords? Coordinate Coords to search at. (Default: Player position)
+---@param coords? vector3 Coords to search at. (Default: Player position)
 ---@return number closestPlayer Closest Player's source
 ---@return number closestPlayerDistance Closest- Player's distance
 function ESX.Game.GetClosestPlayer(coords)
@@ -328,7 +328,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Gets the closest vehicle.
----@param coords? Coordinate Coords to search at. (Default: Player position)
+---@param coords? vector3 Coords to search at. (Default: Player position)
 ---@param modelFilter? table Enables whitelist mode for getting closest vehicle. The table must be key-value where the key is the model hash, and value set to true.
 ---@return number closestVehicle Closest Vehicle
 ---@return number closestVehicleDistance Closest Vehicle distance
@@ -338,7 +338,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Gets all players within the max distance of a coord.
----@param coords? Coordinate The coords to search at. (Default: Player postion)
+---@param coords? vector3 The coords to search at. (Default: Player postion)
 ---@param maxDistance number The maxmimum search distance
 ---@return number[] playersInArea Players Ids
 function ESX.Game.GetPlayersInArea(coords, maxDistance)
@@ -347,7 +347,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Gets all vehicles within the max distance of a coord.
----@param coords? Coordinate The coords to search at. (Default: Player postion)
+---@param coords? vector3 The coords to search at. (Default: Player postion)
 ---@param maxDistance number The maximum search distance
 ---@return number[] vehiclesInArea Vehicle handles
 function ESX.Game.GetVehiclesInArea(coords, maxDistance)
@@ -356,7 +356,7 @@ end
 
 --<h3>(Clientside Only)</h3>
 --Returns a boolean if the spawn point coords area is clear from vehicles within the max distance.
----@param coords? Coordinate The coords to search at. (Default: Player postion)
+---@param coords? vector3 The coords to search at. (Default: Player postion)
 ---@param maxDistance number The maxmimum search distance
 ---@return boolean
 function ESX.Game.IsSpawnPointClear(coords, maxDistance)
@@ -367,7 +367,7 @@ end
 --Get closest Entity
 ---@param entities? number[]|string[]
 ---@param isPlayerEntities? boolean Are entities players
----@param coords? Coordinate Coords to search at. (Default: Player postion)
+---@param coords? vector3 Coords to search at. (Default: Player postion)
 ---@param modelFilter? table Enables whitelist mode for getting closest Entity. The table must be key-value where the key is the model hash, and value set to true.
 ---@return number closestEntity Handle of closest entity
 ---@return number closestEntityDistance Distance of closest entity
@@ -399,11 +399,12 @@ function ESX.Game.SetVehicleProperties(vehicle, props) end
 
 --<h3>(Clientside Only)</h3>
 --Draws 3D text on the specified coords. Must be drawn every frame, ideally in a loop. size and font arguments are optional.
----@param coords Coordinate Coords the 3D Text should be displayed at
+---@param coords vector3 Coords the 3D Text should be displayed at
 ---@param text string Message that should be displayed
 ---@param size number The Size of the 3D Text
 ---@param font TextFont 
 function ESX.Game.Utils.DrawText3D(coords, text, size, font) end
+
 
 -- function ESX.ShowInventory() end
 

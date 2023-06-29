@@ -17,17 +17,11 @@
 ---| "sv" Swedish
 ---| "tc" Traditional Chinese
 
----@class Coordinate
----@field x number
----@field y number
----@field z number
----@field heading number
-
 ---@class ESX_Config
 ---@field Locale ESX_Locales
 ---@field Accounts table<string, {label: string, round: boolean}>
 ---@field StartingAccountMoney table<string, number>
----@field DefaultSpawn Coordinate
+---@field DefaultSpawn vector3
 ---@field EnablePaycheck boolean Enable Paycheck
 ---@field EnableSocietyPayouts boolean Pay from the society account that the player is employed at? Requirement: esx_society
 ---@field MaxWeight number The max inventory weight without backpack
@@ -69,7 +63,7 @@
 ---- "money", 
 ---- "black_money"
 ---@field accounts table<string, ESX_Account> The accounts of the player
----@field coords Coordinate The last known position of the Player
+---@field coords vector3 The last known position of the Player
 ---@field group string The current permission group of the player
 ---@field identifier string The players Rockstar Identifier(has char index with multichar in the front, example: char1:[identifier])
 ---@field inventory ESX_Item[] The players inventory
@@ -83,7 +77,6 @@
 ---@field maxWeight number The max weight a player can handle
 ---@field metadata table Saved metadata
 ---@field license string Player license
----@field ped number Player's Ped Handle
 
 ---ESX Account
 ---@class ESX_Account

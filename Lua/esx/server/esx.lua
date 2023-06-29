@@ -26,22 +26,33 @@ function ESX.TriggerClientCallback(player, eventName, callback, ...) end
 ---@param msg string Anything to print to console
 function ESX.Trace(msg) end
 
+---@class CommandSuggestion: table
+---@field help string
+---@field arguments CommandArgument[]
+
+---@alias CommandArgumentType "number"|"player"|"string"|"item"|"weapon"|"any"
+
+---@class CommandArgument: table
+---@field name string
+---@field validate boolean
+---@field help string
+---@field type CommandArgumentType
+
 --<h3>(Serverside Only)</h3>
 --Registers A command using ESX functions.
 ---@param name string|table Name/s of Command/s
 ---@param group string Minimum Permission Group
 ---@param cb fun(xPlayer: ExtendedPlayer, args: table, showError: boolean) Function to run
----@param allowConsole boolean Can Be ran from console
----@param suggestion? table Chat Suggestion
----@param arguments? table Command Arguments
-function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion, arguments)
+---@param allowConsole? boolean Can Be ran from console
+---@param suggestion? CommandSuggestion Chat Suggestion
+function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion)
   cb(xPlayer, args, showError)
 end
 
 --<h3>(Serverside Only)</h3>
 --Returns an array of all users. You can use this function to filter players to find specific types of people such as police or admins.
----@param key string group or job
----@param value string The Group or Job you want to filter
+---@param key? string key in xPlayer. Example: "job"
+---@param value? string The value you want to filter out. Example: "police"
 ---@return ExtendedPlayer[] xPlayers
 function ESX.GetExtendedPlayers(key, value)
   return ESX.Players

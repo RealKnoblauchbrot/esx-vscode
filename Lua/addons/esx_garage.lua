@@ -20,15 +20,15 @@
 
 exports["esx_garage"] = {
 
-  ---Get all Garages
-  ---@return table<string, Garage>
-  getGarages = function ()
-    return garages
-  end,
+    ---Get all Garages
+    ---@return table<string, Garage>
+    getGarages = function()
+        return garages
+    end,
 
-  ---Get all Impounds
-  ---@return table<string, Impound>
-  getImpounds = function ()
-    return impounds
-  end
+    ---Get all Impounds
+    ---@return table<string, Impound>
+    getImpounds = function()
+        return impounds
+    end
 }

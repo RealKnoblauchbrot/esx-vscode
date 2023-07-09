@@ -6,7 +6,7 @@ ESX.Table = {}
 ---@param t table
 ---@return number sizeOfTable
 function ESX.Table.SizeOf(t)
-  return sizeOfTable
+    return sizeOfTable
 end
 
 --Set all table content to true
@@ -18,7 +18,7 @@ function ESX.Table.Set(t) end
 ---@param value any
 ---@return number
 function ESX.Table.IndexOf(t, value)
-  return index
+    return index
 end
 
 --The same as ESX.Table.IndexOf but starts at the end of table <br>
@@ -27,7 +27,7 @@ end
 ---@param value any
 ---@return number
 function ESX.Table.LastIndexOf(t, value)
-  return index
+    return index
 end
 
 --TODO: Explain this and add Example
@@ -35,13 +35,13 @@ end
 ---@param cb fun(valueFromTable: any)
 ---@return any valueFromTable
 function ESX.Table.Find(t, cb)
-  for i=1, #t, 1 do
-		if cb(t[i]) then
-			return t[i]
-		end
-	end
+    for i = 1, #t, 1 do
+        if cb(t[i]) then
+            return t[i]
+        end
+    end
 
-	return nil
+    return nil
 end
 
 --TODO: Explain this and add Example
@@ -49,56 +49,55 @@ end
 ---@param cb fun(valueFromTable: any)
 ---@return number index
 function ESX.Table.FindIndex(t, cb)
-  for i=1, #t, 1 do
-		if cb(t[i]) then
-			return i
-		end
-	end
+    for i = 1, #t, 1 do
+        if cb(t[i]) then
+            return i
+        end
+    end
 
-	return -1
+    return -1
 end
 
 --TODO: Explain this and add Example
 ---@param t table
 ---@param cb fun(valueFromTable: any)
 function ESX.Table.Filter(t, cb)
-  local newTable = {}
+    local newTable = {}
 
-	for i=1, #t, 1 do
-		if cb(t[i]) then
-			table.insert(newTable, t[i])
-		end
-	end
+    for i = 1, #t, 1 do
+        if cb(t[i]) then
+            table.insert(newTable, t[i])
+        end
+    end
 
-	return newTable
+    return newTable
 end
 
 --TODO: Explain this and add Example
 ---@param t table
 ---@param cb fun(value: any, i: number)
 function ESX.Table.Map(t, cb)
-  local newTable = {}
+    local newTable = {}
 
-	for i=1, #t, 1 do
-		newTable[i] = cb(t[i], i)
-	end
+    for i = 1, #t, 1 do
+        newTable[i] = cb(t[i], i)
+    end
 
-	return newTable
+    return newTable
 end
-
 
 --Reverse a table
 ---@param t table Table that should be reversed
 ---@return table reversedTable Given table but reversed
 function ESX.Table.Reverse(t)
-  return reversedTable
+    return reversedTable
 end
 
 --Clone a Table
 ---@param t table
 ---@return table
 function ESX.Table.Clone(t)
-  return clonedTable
+    return clonedTable
 end
 
 --Concat two tables
@@ -106,7 +105,7 @@ end
 ---@param t2 table
 ---@return table concattedTable
 function ESX.Table.Concat(t1, t2)
-  return concattedTable
+    return concattedTable
 end
 
 --Return a String with Joined values from given table and that are seperated with given seperator
@@ -114,7 +113,7 @@ end
 ---@param sep string
 ---@return string
 function ESX.Table.Join(t, sep)
-  return JoinedString
+    return JoinedString
 end
 
 --Check if table contains given value
@@ -122,7 +121,7 @@ end
 ---@param val any
 ---@return boolean containsValue
 function ESX.Table.TableContaints(tab, val)
-  return containsValue  
+    return containsValue
 end
 
 --Sort Table for pairs <br>
@@ -131,5 +130,5 @@ end
 ---@param t table
 ---@param order fun(t: table, a: unknown, b: unknown)
 function ESX.Table.Sort(t, order)
-  return sortedTable
+    return sortedTable
 end

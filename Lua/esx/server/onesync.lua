@@ -11,7 +11,7 @@ ESX.OneSync = {}
 ---@param ignore? table playerIds to ignore, where the key is playerId and value is true
 ---@return table players Players inside the specified radius
 function ESX.OneSync.GetPlayersInArea(source, maxDistance, ignore)
-  return players
+    return players
 end
 
 --<h3>(Serverside Only)</h3>
@@ -21,7 +21,7 @@ end
 ---@param ignore? table playerIds to ignore, where the key is playerId and value is true
 ---@return unknown
 function ESX.OneSync.GetClosestPlayer(source, maxDistance, ignore)
-  return closestPlayer 
+    return closestPlayer
 end
 
 --<h3>(Serverside Only)</h3>
@@ -68,8 +68,8 @@ function ESX.OneSync.SpawnPedInVehicle(model, vehicle, seat, cb) end
 ---@param maxDistance number radius
 ---@param modelFilter table models to ignore, where the key is the model hash and the value is true
 ---@return table nearbyPeds
-function ESX.OneSync.GetPedsInArea(coords, maxDistance, modelFilter) 
-  return nearbyPeds
+function ESX.OneSync.GetPedsInArea(coords, maxDistance, modelFilter)
+    return nearbyPeds
 end
 
 --<h3>(Serverside Only)</h3>
@@ -79,17 +79,17 @@ end
 ---@param modelFilter table models to ignore, where the key is the model hash and the value is true
 ---@return table nearbyObjects
 function ESX.OneSync.GetObjectsInArea(coords, maxDistance, modelFilter)
-  return nearbyObjects
+    return nearbyObjects
 end
 
 --<h3>(Serverside Only)</h3>
 --Get all vehicles in radius
 ---@param coords vector3
----@param maxDistance number radius 
+---@param maxDistance number radius
 ---@param modelFilter table models to ignore, where the key is the model hash and the value is true
 ---@return table nearbyVehicles
 function ESX.OneSync.GetVehiclesInArea(coords, maxDistance, modelFilter)
-	return nearbyVehicles
+    return nearbyVehicles
 end
 
 --<h3>(Serverside Only)</h3>
@@ -98,7 +98,7 @@ end
 ---@param modelFilter table models to ignore, where the key is the model hash and the value is true
 ---@return number entityId, number distance, vector3 pedCoords
 function ESX.OneSync.GetClosestPed(coords, modelFilter)
-  return entityId, distance, pedCoords
+    return entityId, distance, pedCoords
 end
 
 --<h3>(Serverside Only)</h3>
@@ -107,5 +107,5 @@ end
 ---@param modelFilter table models to ignore, where the key is the model hash and the value is true
 ---@return number entityId, number distance, vector3 vehicleCoords
 function ESX.OneSync.GetClosestVehicle(coords, modelFilter)
-	return entityId, distance, vehicleCoords
+    return entityId, distance, vehicleCoords
 end

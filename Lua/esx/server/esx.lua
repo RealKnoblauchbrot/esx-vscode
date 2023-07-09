@@ -26,17 +26,11 @@ function ESX.TriggerClientCallback(player, eventName, callback, ...) end
 ---@param msg string Anything to print to console
 function ESX.Trace(msg) end
 
----@class CommandSuggestion: table
----@field help string
----@field arguments CommandArgument[]
-
----@alias CommandArgumentType "number"|"player"|"string"|"item"|"weapon"|"any"
-
 ---@class CommandArgument: table
 ---@field name string
 ---@field validate boolean
 ---@field help string
----@field type CommandArgumentType
+---@field type "number"|"player"|"string"|"item"|"weapon"|"any"
 
 --<h3>(Serverside Only)</h3>
 --Registers A command using ESX functions.
@@ -44,9 +38,9 @@ function ESX.Trace(msg) end
 ---@param group string Minimum Permission Group
 ---@param cb fun(xPlayer: ExtendedPlayer, args: table, showError: boolean) Function to run
 ---@param allowConsole? boolean Can Be ran from console
----@param suggestion? CommandSuggestion Chat Suggestion
+---@param suggestion? {help: string, arguments: CommandArgument[]} Chat Suggestion
 function ESX.RegisterCommand(name, group, cb, allowConsole, suggestion)
-  cb(xPlayer, args, showError)
+    cb(xPlayer, args, showError)
 end
 
 --<h3>(Serverside Only)</h3>
@@ -55,15 +49,15 @@ end
 ---@param value? string The value you want to filter out. Example: "police"
 ---@return ExtendedPlayer[] xPlayers
 function ESX.GetExtendedPlayers(key, value)
-  return ESX.Players
+    return ESX.Players
 end
 
 --<h3>(Serverside Only)</h3>
 --Returns the ESX player object from a server id. Returns nil for invalid players.
 ---@param source number The Server ID of the Target Player
 ---@return ExtendedPlayer xPlayer
-function ESX.GetPlayerFromId(source) 
-  return xPlayer
+function ESX.GetPlayerFromId(source)
+    return xPlayer
 end
 
 --<h3>(Serverside Only)</h3>
@@ -71,15 +65,15 @@ end
 ---@param identifier string The Rockstar identifier of the Target Player
 ---@return ExtendedPlayer xPlayer
 function ESX.GetPlayerFromIdentifier(identifier)
-  return xPlayer
+    return xPlayer
 end
 
 --<h3>(Serverside Only)</h3>
 --Returns the player's Identifier
 ---@param playerId any The Server ID of the Target Player
 ---@return string identifier
-function ESX.GetIdentifier(playerId) 
-  return identifier
+function ESX.GetIdentifier(playerId)
+    return identifier
 end
 
 --<h3>(Serverside Only)</h3>
@@ -104,6 +98,12 @@ function ESX.DiscordLog(name, title, color, message) end
 ---@param color string Webhook Colour (found in Config.logs.lua)
 ---@param fields table Fields To Log
 function ESX.DiscordLogFields(name, title, color, fields) end
+
+---Create Job at Runtime
+---@param name string Name of the job
+---@param label string Label for the job
+---@param grades {grade: number, name: string, label: string, salary: number}[]
+function ESX.CreatoJob(name, label, grades) end
 
 --<h3>(Serverside Only)</h3>
 --Refresh All Jobs
@@ -137,22 +137,22 @@ function ESX.SetPlayerFunctionOverride(index) end
 --Returns an item label.
 ---@param item string Item name
 ---@return string itemLabel
-function ESX.GetItemLabel(item) 
-  return ESX.Items[item].label
+function ESX.GetItemLabel(item)
+    return ESX.Items[item].label
 end
 
 --<h3>(Serverside Only)</h3>
 --Returns all known jobs along with their grades.
 ---@return table jobs
 function ESX.GetJobs()
-  return ESX.Jobs
+    return ESX.Jobs
 end
 
 --<h3>(Serverside Only)</h3>
 --Returns all usable items
 ---@return table items
 function ESX.GetUsableItems()
-  return usableItems
+    return usableItems
 end
 
 --<h3>(Serverside Only)</h3>
@@ -173,7 +173,7 @@ function ESX.CreatePickup(type, name, count, label, playerId, components, tintIn
 ---@param grade number The grade of the job.
 ---@return boolean isValid Is the job and grade valid?
 function ESX.DoesJobExist(job, grade)
-  return ESX.Jobs[job] and ESX.Jobs[job].grades[grade]
+    return ESX.Jobs[job] and ESX.Jobs[job].grades[grade]
 end
 
 return ESX

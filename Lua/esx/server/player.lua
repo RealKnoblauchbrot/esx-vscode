@@ -6,7 +6,7 @@
 ExtendedPlayer = {}
 
 --Triggers an client event for the player. <br> Example:
---```lua 
+--```lua
 --ESX.RegisterCommand('noclip', 'admin', function(xPlayer, args) -- register a coammnd
 --  xPlayer.triggerEvent('esx:noclip') -- Triggers The client event for the Source Player
 --end, false)
@@ -15,23 +15,17 @@ ExtendedPlayer = {}
 ---@param ...? any Variable number of arguments
 function ExtendedPlayer.triggerEvent(eventName, ...) end
 
-
-
 --Sets the player's coords (teleports) <br> Example:
---```lua 
+--```lua
 -- ESX.RegisterCommand('setcoords', 'admin', function(xPlayer, args, showError)
 -- 	xPlayer.setCoords({x = 600.0, y = 112.4, z = 65.5})
 -- end, false)
 --```
----@param coords vector3 The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
-function ExtendedPlayer.setCoords(coords) end
-
--- Should not be used
--- Updates the player's current coords
-function ExtendedPlayer.updateCoords() end
+---@param coordinates vector3|vector4 The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify heading to set the entity heading upon teleportation
+function ExtendedPlayer.setCoords(coordinates) end
 
 --Returns the player's current coordinates on the server. The optional boolean useVector argument is for returning a vector3 type. Keep in mind that the coords sync interval can be adjusted in the configuration file in case you want to get precise player coords. <br> Example:
---```lua 
+--```lua
 -- ESX.RegisterCommand('printCoords', 'admin', function (xPlayer, args, showError)
 --   local coords = xPlayer.getCoords(true) -- Get coordinates as vector3
 --   local distance = #(coords - vector3(610.0, 120.2, 60.3))
@@ -40,9 +34,9 @@ function ExtendedPlayer.updateCoords() end
 -- end, false)
 --```
 ---@param useVector? boolean Returns an vector3 type if set to true, and normally a table with x, y and z pairs
----@return vector3
+---@return vector3|{x: number, y: number, z: number}
 function ExtendedPlayer.getCoords(useVector)
-  return coords  
+    return coords
 end
 
 --Kicks a player with a reason. <br> Example:
@@ -75,7 +69,7 @@ function ExtendedPlayer.setMoney(money) end
 --```
 ---@return number money
 function ExtendedPlayer.getMoney()
-  return ExtendedPlayer.getAccount('money').money
+    return ExtendedPlayer.getAccount('money').money
 end
 
 --Adds money to player's cash.
@@ -95,8 +89,8 @@ function ExtendedPlayer.removeMoney(money) end
 
 --Returns the Rockstar identifier used
 ---@return string
-function ExtendedPlayer.getIndentifier() 
-  return ExtendedPlayer.identifier
+function ExtendedPlayer.getIndentifier()
+    return ExtendedPlayer.identifier
 end
 
 --Set player permission group
@@ -106,7 +100,7 @@ function ExtendedPlayer.setGroup(newGroup) end
 --Returns the permission group
 ---@return string
 function ExtendedPlayer.getGroup()
-  return ExtendedPlayer.group
+    return ExtendedPlayer.group
 end
 
 --Set a custom key in the Player Object
@@ -118,9 +112,8 @@ function ExtendedPlayer.set(k, v) end
 ---@param k string
 ---@return unknown
 function ExtendedPlayer.get(k)
-  return ExtendedPlayer.variables[k]
+    return ExtendedPlayer.variables[k]
 end
-
 
 --Returns all registered player accounts.
 --
@@ -128,40 +121,40 @@ end
 ---@param minimal? boolean Only get Account money
 ---@return table<string, ESX_Account|number>
 function ExtendedPlayer.getAccounts(minimal)
-  return ExtendedPlayer.accounts
+    return ExtendedPlayer.accounts
 end
 
 --Returns details (returned in an table) for an account.
 ---@param account string An valid account
 ---@return ESX_Account
 function ExtendedPlayer.getAccount(account)
-  return ExtendedPlayer.accounts[account]
+    return ExtendedPlayer.accounts[account]
 end
 
 --Returns the entire player inventory.
 ---@param minimal? boolean Return inventory in a key-value table where key is item name, and only add items with count over 0 to that table.
 ---@return ESX_Item[]
 function ExtendedPlayer.getInventory(minimal)
-  return ExtendedPlayer.inventory
+    return ExtendedPlayer.inventory
 end
 
 --Returns the current player job object.
 ---@return ESX_Job job player's job
 function ExtendedPlayer.getJob()
-  return ExtendedPlayer.job
+    return ExtendedPlayer.job
 end
 
 --Returns the player loadout. <br> Returns empty table with ox_inventory installed check for the item instead
 ---@param minimal boolean
 ---@return ESX_Weapon[]
 function ExtendedPlayer.getLoadout(minimal)
-  return ExtendedPlayer.loadout
+    return ExtendedPlayer.loadout
 end
 
 --If you have ESX identity Installed, This will return the Character Name, If not, it will return the FiveM name.
 ---@return string
 function ExtendedPlayer.getName()
-  return ExtendedPlayer.name
+    return ExtendedPlayer.name
 end
 
 --Sets the player name.
@@ -171,7 +164,7 @@ function ExtendedPlayer.setName(newName) end
 --Sets money for an account.
 ---@param accountName string Valid accounts can be found in configuration file
 ---@param money number Amount of money
----@param reason? string 
+---@param reason? string
 function ExtendedPlayer.setAccountMoney(accountName, money, reason) end
 
 --Adds Money Instead the specified account.
@@ -187,54 +180,54 @@ function ExtendedPlayer.addAccountMoney(accountName, money, reason) end
 function ExtendedPlayer.removeAccountMoney(accountName, money, reason) end
 
 --Retuns specified inventory item.
----@param name string Item name
+---@param itemName string Item name
 ---@param metadata? any (Only available with ox_inventory)
 ---@return ESX_Item item
-function ExtendedPlayer.getInventoryItem(name, metadata)
-  return item
+function ExtendedPlayer.getInventoryItem(itemName, metadata)
+    return item
 end
 
---Adds an item to the player's inventory 
---(Will not check if player has enough space in inventory, use xPlayer.canCarryItem(item, count))
----@param name string Item name
+--Adds an item to the player's inventory
+--(Will not check if player has enough space in inventory, use xPlayer.canCarryItem(itemName, count))
+---@param itemName string Item name
 ---@param count number Count of item to add
 ---@param metadata? any (Only available with ox_inventory)
 ---@param slot? number (Only available with ox_inventory)
-function ExtendedPlayer.addInventoryItem(name, count, metadata, slot) end
+function ExtendedPlayer.addInventoryItem(itemName, count, metadata, slot) end
 
 --Removes specified item in player's inventory
----@param name string Item name, valid items can be found in database table items
+---@param itemName string Item name, valid items can be found in database table items
 ---@param count number Amount of the item to remove
 ---@param metadata? any (Only available with ox_inventory)
 ---@param slot? number (Only available with ox_inventory)
-function ExtendedPlayer.removeInventoryItem(name, count, metadata, slot) end
+function ExtendedPlayer.removeInventoryItem(itemName, count, metadata, slot) end
 
 --Sets specified item count in inventory
----@param name string Item name, valid items can be found in database table items
+---@param itemName string Item name, valid items can be found in database table items
 ---@param count number New item count
 ---@param metadata? any (Only available with ox_inventory)
 ---@param slot? number (Only available with ox_inventory) Set item in specific slot
-function ExtendedPlayer.setInventoryItem(name, count, metadata, slot) end
+function ExtendedPlayer.setInventoryItem(itemName, count, metadata, slot) end
 
 --Returns the current player weight in a number type, can be used to do calculations.
 ---@return number weight
 function ExtendedPlayer.getWeight()
-  return ExtendedPlayer.weight
+    return ExtendedPlayer.weight
 end
 
 --Returns the player's max weight
 ---@return number maxWeight
 function ExtendedPlayer.getMaxWeight()
-  return ExtendedPlayer.maxWeight
+    return ExtendedPlayer.maxWeight
 end
 
 --Is used to determinate if a player can carry an item.
----@param name string Item name
+---@param itemName string Item name
 ---@param count number Item count
----@param metadata? any 
+---@param metadata? any
 ---@return boolean canCarry
-function ExtendedPlayer.canCarryItem(name, count, metadata)
-  return canCarry
+function ExtendedPlayer.canCarryItem(itemName, count, metadata)
+    return canCarry
 end
 
 --Is used to determinate if a player can swap an item for some other item.
@@ -244,7 +237,7 @@ end
 ---@param testItemCount number Test item count
 ---@return boolean canSwapItem
 function ExtendedPlayer.canSwapItem(firstItem, firstItemCount, testItem, testItemCount)
-  return canSwapItem
+    return canSwapItem
 end
 
 --Set the player's max Weight
@@ -252,9 +245,9 @@ end
 function ExtendedPlayer.setMaxWeight(newMaxWeight) end
 
 --Sets the player job, the job must be defined in the jobs database table.
----@param job string Job name
+---@param newJob string Job name
 ---@param grade number Job grade
-function ExtendedPlayer.setJob(job, grade) end
+function ExtendedPlayer.setJob(newJob, grade) end
 
 --Adds a weapon to player's loadout.
 --<h4>(Does not work with ox_inventory)</h4>
@@ -291,7 +284,7 @@ function ExtendedPlayer.setWeaponTint(weaponName, weaponTintIndex) end
 ---@param weaponName string
 ---@return weapon_tints tint
 function ExtendedPlayer.getWeaponTint(weaponName)
-  return ExtendedPlayer.loadout[weaponName].tintIndex
+    return ExtendedPlayer.loadout[weaponName].tintIndex
 end
 
 --Removes specified weapon from player's loadout
@@ -311,7 +304,7 @@ function ExtendedPlayer.removeWeaponComponent(weaponName, weaponComponent) end
 ---@param weaponComponent string Weapon component
 ---@return boolean hasWeaponComponent
 function ExtendedPlayer.hasWeaponComponent(weaponName, weaponComponent)
-  return hasWeaponComponent
+    return hasWeaponComponent
 end
 
 --Returns if the player has the specified weapon.
@@ -319,7 +312,7 @@ end
 ---@param weaponName string Weapon name
 ---@return boolean hasWeapon
 function ExtendedPlayer.hasWeapon(weaponName)
-  return hasWeapon
+    return hasWeapon
 end
 
 --Checks if the player has the specified item, if they do, it will return item and item count
@@ -328,7 +321,7 @@ end
 ---@return boolean|ESX_Item hasItem false if item not found or item object
 ---@return nil|number itemCount nil if item not found or item count
 function ExtendedPlayer.hasItem(item, metadata)
-  return hasItem, itemCount
+    return hasItem, itemCount
 end
 
 --Returns the loadout Key and a weapon object for the weapon if the player has it.
@@ -337,7 +330,7 @@ end
 ---@return number loudoutKey
 ---@return ESX_Weapon weapon
 function ExtendedPlayer.getWeapon(weaponName)
-  return loudoutKey, weapon
+    return loudoutKey, weapon
 end
 
 --Shows a basic notification to the player.
@@ -355,8 +348,20 @@ end
 -- - \~w~ White
 -- - \~h~ Toggle Bold
 ---@param msg string
-function ExtendedPlayer.showNotification(msg) end
+---@param type 'error'|'success'|'info'|string
+---@param length number
+function ExtendedPlayer.showNotification(msg, type, length) end
 
+--Shows an advanced notification.
+---@param sender string Message header
+---@param subject string Message subject
+---@param msg string Message content
+---@param textureDict ESX_AdvancedNotificationDictionary Texture directory, see [Texture Direcotry]() for accepted values
+---@param iconType ESX_AdvancedNotificationIconType Icon type
+---@param flash? boolean
+---@param saveToBrief? boolean
+---@param hudColorIndex? number
+function ExtendedPlayer.showAdvancedNotification(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex) end
 
 --Shows a help notification with a message. These help notification support displaying button inputs, see this [list](https://docs.fivem.net/docs/game-references/controls/)
 ---@param msg string The message to display
@@ -370,7 +375,7 @@ function ExtendedPlayer.showHelpNotification(msg, thisFrame, beep, duration) end
 ---@param subIndex string
 ---@return number|string|table
 function ExtendedPlayer.getMeta(index, subIndex)
-  return meta
+    return meta
 end
 
 --Set player meta
@@ -382,4 +387,3 @@ function ExtendedPlayer.setMeta(index, value, subValue) end
 ---Clear player meta
 ---@param index string|table
 function ExtendedPlayer.clearMeta(index) end
-

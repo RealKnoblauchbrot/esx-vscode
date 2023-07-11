@@ -1,110 +1,99 @@
 {
-	"ESX Import": {
-		"prefix": "Import ESX",
-		"body": [
-			"'@es_extended/imports.lua',"
-		],
-		"description": "Import the ESX Object"
-	},
-
-  "Import OxMySQL": {
-    "prefix": "Import OxMySQL",
-    "body": [
-      "'@oxmysql/lib/MySQL.lua',"
-    ],
-    "description": "Import the MySQL Object"
-  },
-
-  "Alternative ESX Import": {
-    "prefix": "Import ESX using exports",
-    "body": [
-      "ESX = exports['es_extended']:getSharedObject()"
-    ],
-    "description": "An alternative way of importing the ESX Object"
-  },
-
-  "ESX Locale": {
-		"prefix": "Import Locale System",
-		"body": [
-			"'@es_extended/locale.lua',"
-		],
-		"description": "Import the ESX Locale System"
-	},
-
-  "Example Resource Manifest": {
-    "prefix": "ESX Resource Manifest",
-		"body": [
-			"fx_version 'cerulean'",
-      "game 'gta5'",
-      "",
-      "description '${1:description}'",
-      "author '${2:author}'",
-      "",
-      "lua54 'yes'",
-      "",
-      "client_scripts {",
-      "  '${3:clientScript}.lua',",
-      "}",
-      "",
-      "server_scripts {",
-      "  '${4:serverScript}.lua',",
-      "}",
-      "",
-      "shared_scripts {",
-      "  '@es_extended/imports.lua',",
-      "  '@es_extended/locale.lua',",
-      "}",
-      "",
-      "dependencies {",
-      "  'es_extended'",
-      "}"
-
-		],
-		"description": "An example resource manifest for ESX Scripts <br> "
-  },
-
-  "ESX RegisterCommand": {
-		"prefix": "ESX RegisterCommand",
-		"body": [
-			"ESX.RegisterCommand('${1:commandName}', '${2:group}', function(xPlayer, args, showError)",
-      "  -- Your code here",
-      "end, ${3:allowConsole}, {help = '${4:Command description}'})"
-		],
-		"description": "Register a command (Serverside)"
-	},
-
-  "ESX RegisterServerCallback": {
-		"prefix": "ESX RegisterServerCallback",
-		"body": [
-			"ESX.RegisterServerCallback('${1:callbackName}', function(src, cb, ${2:params})",
-      "  local data = 'some random string'",
-      "  cb(data)",
-      "end)"
-		],
-		"description": "Registers a server callback, which is used for sending Server Data, to a client. (Serverside)"
-	},
-
-  "ESX TriggerServerCallback": {
-    "prefix": "ESX TriggerServerCallback",
-    "body": [
-      "local data = 'some data that the server receives'",
-      "ESX.TriggerServerCallback('${1:callbackName}', function(${2:data})",
-      "  -- Your code here",
-      "end, data)"
-    ],
-    "description": "Triggers a server callback"
-  },
-
-  "ESX RegisterUsableItem": {
-    "prefix": "ESX RegisterUsableItem",
-    "body": [
-      "ESX.RegsiterItem('${1:itemName}', function(playerId)",
-      "  local xPlayer = ESX.GetPlayerFromId(playerId)",
-      "  -- Your code here",
-      "end)"
-    ],
-    "description": "Register a Usable Item"
-  }
-
-
+    "ESX Import": {
+        "prefix": "Import ESX",
+        "body": [
+            "'@es_extended/imports.lua',"
+        ],
+        "description": "Import the ESX Object"
+    },
+    "Import OxMySQL": {
+        "prefix": "Import OxMySQL",
+        "body": [
+            "'@oxmysql/lib/MySQL.lua',"
+        ],
+        "description": "Import the MySQL Object"
+    },
+    "Alternative ESX Import": {
+        "prefix": "Import ESX using exports",
+        "body": [
+            "ESX = exports['es_extended']:getSharedObject()"
+        ],
+        "description": "An alternative way of importing the ESX Object"
+    },
+    "ESX Locale": {
+        "prefix": "Import Locale System",
+        "body": [
+            "'@es_extended/locale.lua',"
+        ],
+        "description": "Import the ESX Locale System"
+    },
+    "Example Resource Manifest": {
+        "prefix": "ESX Resource Manifest",
+        "body": [
+            "fx_version 'cerulean'",
+            "game 'gta5'",
+            "",
+            "description '${1:description}'",
+            "author '${2:author}'",
+            "",
+            "lua54 'yes'",
+            "",
+            "client_scripts {",
+            "  '${3:clientScript}.lua',",
+            "}",
+            "",
+            "server_scripts {",
+            "  '${4:serverScript}.lua',",
+            "}",
+            "",
+            "shared_scripts {",
+            "  '@es_extended/imports.lua',",
+            "  '@es_extended/locale.lua',",
+            "}",
+            "",
+            "dependencies {",
+            "  'es_extended'",
+            "}"
+        ],
+        "description": "An example resource manifest for ESX Scripts <br> "
+    },
+    "ESX RegisterCommand": {
+        "prefix": "ESX RegisterCommand",
+        "body": [
+            "ESX.RegisterCommand('${1:commandName}', '${2:group}', function(xPlayer, args, showError)",
+            "  -- Your code here",
+            "end, ${3:allowConsole}, {help = '${4:Command description}'})"
+        ],
+        "description": "Register a command (Serverside)"
+    },
+    "ESX RegisterServerCallback": {
+        "prefix": "ESX RegisterServerCallback",
+        "body": [
+            "ESX.RegisterServerCallback('${1:callbackName}', function(src, cb, ${2:params})",
+            "  local data = 'some random string'",
+            "  cb(data)",
+            "end)"
+        ],
+        "description": "Registers a server callback, which is used for sending Server Data, to a client. (Serverside)"
+    },
+    "ESX TriggerServerCallback": {
+        "prefix": "ESX TriggerServerCallback",
+        "body": [
+            "local data = 'some data that the server receives'",
+            "ESX.TriggerServerCallback('${1:callbackName}', function(${2:data})",
+            "  -- Your code here",
+            "end, data)"
+        ],
+        "description": "Triggers a server callback"
+    },
+    "ESX RegisterUsableItem": {
+        "prefix": "ESX RegisterUsableItem",
+        "body": [
+            "ESX.RegsiterItem('${1:itemName}', function(playerId)",
+            "  local xPlayer = ESX.GetPlayerFromId(playerId)",
+            "  -- Your code here",
+            "end)"
+        ],
+        "description": "Register a Usable Item"
+    }
 }

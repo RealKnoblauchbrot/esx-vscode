@@ -276,7 +276,7 @@ function ExtendedPlayer.updateWeaponAmmo(weaponName, ammoCount) end
 --Sets the player weapon tint from the tint index, if the player has it.
 --<h4>(Does not work with ox_inventory)</h4>
 ---@param weaponName string Weapon name
----@param weaponTintIndex number Weapon tint index
+---@param weaponTintIndex weapon_tints Weapon tint index
 function ExtendedPlayer.setWeaponTint(weaponName, weaponTintIndex) end
 
 --Returns the tint index of the specified weapon from the Player.

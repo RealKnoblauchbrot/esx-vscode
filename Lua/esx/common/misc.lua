@@ -116,8 +116,8 @@
 ---@field usable boolean Whether or not the item is usable (Only available with ox_inventory)
 ---@field rare boolean Whether or not the item is rare (Only available with ox_inventory)
 ---@field canRemove boolean Whether or not the item can be thrown away (Only available with ox_inventory)
----@field slot number (Only available with ox_inventory)
----@field metadata table (Only available with ox_inventory)
+---@field slot? number (Only available with ox_inventory)
+---@field metadata? table (Only available with ox_inventory)
 
 ---ESX Weapon
 ---@class ESX_Weapon

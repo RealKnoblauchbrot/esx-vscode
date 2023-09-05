@@ -2,7 +2,7 @@
     "name": "esx-vscode",
     "displayName": "ESX VSCode",
     "description": "Support for the ESX Framework, popular addons and libraries",
-    "version": "2.1.8",
+    "version": "2.4.0",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -34,7 +34,7 @@
         "configuration": {
             "title": "FivemESX",
             "properties": {
-                "fivem-esx.libraries": {
+                "esx-vscode.libraries": {
                     "title": "Libraries",
                     "type": "object",
                     "order": 1,
@@ -49,7 +49,7 @@
                         "oxmysql": true
                     }
                 },
-                "fivem-esx.addons": {
+                "esx-vscode.addons": {
                     "title": "Addons",
                     "type": "object",
                     "order": 2,

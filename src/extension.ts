@@ -4,7 +4,7 @@ import { enableLinting } from "./lib";
 
 export const extensionId = "knoblauchbrot.esx-vscode";
 
-export async function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
     enableLinting(true)
 
     events.forEach(event => {
@@ -13,6 +13,6 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
-    enableLinting(false) // Doesn't work because process is already killed 🤷‍♂️
+    // enableLinting(false) // Doesn't work because process is already killed 🤷‍♂️
 
 }

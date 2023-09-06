@@ -70,6 +70,8 @@ export const completionItems:{[key: string]: any} = {
             "pma-voice:settingsCallback": ["cb(voiceSettings)"],
 
             "esx:playerLoaded": ["xPlayer", "isNew", "skin"],
+            "esx:pauseMenuActive": ["state"],
+            "esx:loadingScreenOff": [],
 
             "esx_ambulancejob:heal": [],
             "esx_ambulancejob:PlayerDead": ["Player"],
@@ -86,7 +88,13 @@ export const completionItems:{[key: string]: any} = {
             "esx_banking:doingType": ["typeData"],
             "esx_banking:logTransaction": ["label", "key", "amount"],
 
-            "esx_status:registerStatus": ["name", "default", "color", "visible", "tickCallback"]
+            "esx_status:registerStatus": ["name", "default", "color", "visible", "tickCallback"],
+            "esx_status:load": ["status"],
+            "esx_status:set": ["name", "val"],
+            "esx_status:add": ["name", "val"],
+            "esx_status:remove": ["name", "val"],
+            "esx_status:getStatus": ["name", "cb"],
+            "esx_status:setDisplay": ["val"],
             "esx_status:loaded": ["status"],
             "esx_status:onTick": ["data"],
 

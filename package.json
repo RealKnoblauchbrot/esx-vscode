@@ -1,112 +1,136 @@
 {
-  "name": "esx-vscode",
-  "displayName": "ESX VSCode",
-  "description": "Support for the ESX Framework",
-  "version": "2.0.1",
-  "engines": {
-    "vscode": "^1.78.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RealKnoblauchbrot/esx-vscode"
-  },
-  "publisher": "Knoblauchbrot",
-  "categories": [
-    "Linters",
-    "Programming Languages",
-    "Snippets"
-  ],
-  "keywords": [
-    "Lua",
-    "FiveM",
-    "FiveM Framework",
-    "ESX",
-    "ESX Snippets",
-    "Snippets",
-    "fivem-esx",
-    "IntelliSense"
-  ],
-  "activationEvents": [
-    "onLanguage:lua"
-  ],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "configuration": {
-      "title": "FivemESX",
-      "properties": {
-        "fivem-esx.esx-addons": {
-          "title": "ESX Addons",
-          "type": "object",
-          "order": 1,
-          "description": "Enable support and linting for esx addons",
-          "properties": {
-            "esx_boat": {
-              "type": "boolean"
-            },
-            "esx_context": {
-              "type": "boolean"
-            },
-            "esx_garage": {
-              "type": "boolean"
-            },
-            "esx_notify": {
-              "type": "boolean"
-            },
-            "esx_progressbar": {
-              "type": "boolean"
-            },
-            "esx_textui": {
-              "type": "boolean"
-            }
-          },
-          "additionalProperties": false,
-          "default": {
-            "esx_boat": false,
-            "esx_context": true,
-            "esx_garage": false,
-            "esx_notify": true,
-            "esx_progressbar": false,
-            "esx_textui": true
-          }
-        }
-      }
+    "name": "esx-vscode",
+    "displayName": "ESX VSCode",
+    "description": "Support for the ESX Framework, popular addons and libraries",
+    "version": "2.4.0",
+    "engines": {
+        "vscode": "^1.78.0"
     },
-    "snippets": [
-      {
-        "language": "lua",
-        "path": "./Snippets/esx-snippets.json"
-      }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RealKnoblauchbrot/esx-vscode"
+    },
+    "publisher": "Knoblauchbrot",
+    "categories": [
+        "Linters",
+        "Programming Languages",
+        "Snippets"
+    ],
+    "keywords": [
+        "Lua",
+        "FiveM",
+        "FiveM Framework",
+        "ESX",
+        "ESX Snippets",
+        "Snippets",
+        "fivem-esx",
+        "IntelliSense"
+    ],
+    "activationEvents": [
+        "onLanguage:lua"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "FivemESX",
+            "properties": {
+                "esx-vscode.libraries": {
+                    "title": "Libraries",
+                    "type": "object",
+                    "order": 1,
+                    "description": "Enable support and linting for Libraries",
+                    "properties": {
+                        "oxmysql": {
+                            "type": "boolean"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "default": {
+                        "oxmysql": true
+                    }
+                },
+                "esx-vscode.addons": {
+                    "title": "Addons",
+                    "type": "object",
+                    "order": 2,
+                    "description": "Enable support and linting for addons",
+                    "properties": {
+                        "esx_boat": {
+                            "type": "boolean"
+                        },
+                        "esx_context": {
+                            "type": "boolean"
+                        },
+                        "esx_garage": {
+                            "type": "boolean"
+                        },
+                        "esx_notify": {
+                            "type": "boolean"
+                        },
+                        "esx_progressbar": {
+                            "type": "boolean"
+                        },
+                        "esx_textui": {
+                            "type": "boolean"
+                        },
+                        "ox_inventory": {
+                            "type": "boolean"
+                        },
+                        "pma-voice": {
+                            "type": "boolean"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "default": {
+                        "esx_boat": false,
+                        "esx_context": true,
+                        "esx_garage": false,
+                        "esx_notify": true,
+                        "esx_progressbar": false,
+                        "esx_textui": true,
+                        "pma-voice": true,
+                        "ox_inventory": false
+                    }
+                }
+            }
+        },
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./Snippets/esx-snippets.json"
+            }
+        ]
+    },
+    "icon": "esx.jpg",
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.78.0",
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@typescript-eslint/eslint-plugin": "^5.59.1",
+        "@typescript-eslint/parser": "^5.59.1",
+        "eslint": "^8.39.0",
+        "glob": "^8.1.0",
+        "mocha": "^10.2.0",
+        "typescript": "^5.0.4",
+        "ts-loader": "^9.4.2",
+        "webpack": "^5.81.0",
+        "webpack-cli": "^5.0.2",
+        "@vscode/test-electron": "^2.3.0"
+    },
+    "extensionDependencies": [
+        "sumneko.lua",
+        "overextended.cfxlua-vscode"
     ]
-  },
-  "icon": "esx.jpg",
-  "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.78.0",
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
-    "eslint": "^8.39.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.2.0",
-    "typescript": "^5.0.4",
-    "ts-loader": "^9.4.2",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2",
-    "@vscode/test-electron": "^2.3.0"
-  },
-  "extensionDependencies": [
-    "sumneko.lua"
-  ]
 }

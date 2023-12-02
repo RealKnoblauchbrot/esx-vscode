@@ -1,8 +1,8 @@
 ---@meta
 
 ---@class Garage
----@field EntryPoint Coordinate
----@field SpawnPoint Coordinate
+---@field EntryPoint vector3
+---@field SpawnPoint vector3
 ---@field Sprite number
 ---@field Scale number
 ---@field Colour number
@@ -10,8 +10,8 @@
 ---@package
 
 ---@class Impound
----@field GetOutPoint Coordinate
----@field SpawnPoint Coordinate
+---@field GetOutPoint vector3
+---@field SpawnPoint vector3
 ---@field Sprite number
 ---@field Scale number
 ---@field Colour number
@@ -20,15 +20,15 @@
 
 exports["esx_garage"] = {
 
-  ---Get all Garages
-  ---@return table<string, Garage>
-  getGarages = function ()
-    return garages
-  end,
+    ---Get all Garages
+    ---@return table<string, Garage>
+    getGarages = function()
+        return garages
+    end,
 
-  ---Get all Impounds
-  ---@return table<string, Impound>
-  getImpounds = function ()
-    return impounds
-  end
+    ---Get all Impounds
+    ---@return table<string, Impound>
+    getImpounds = function()
+        return impounds
+    end
 }

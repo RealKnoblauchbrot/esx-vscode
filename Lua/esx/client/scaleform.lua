@@ -39,5 +39,5 @@ function ESX.Scaleform.ShowTrafficMovie(sec) end
 ---@param movie ScaleformMovies
 ---@return number
 function ESX.Scaleform.Utils.RequestScaleformMovie(movie)
-  return scaleform
+    return scaleform
 end

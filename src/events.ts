@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { setExternalLibrary } from "./lib";
-import { getPathScriptSide, hasTwoOrLessQuotes, findHandler } from "./misc";
-import { completionItems } from "./items";
+// import { getPathScriptSide, hasTwoOrLessQuotes, findHandler } from "./misc";
+// import { completionItems } from "./items";
 
 const CompletionActivators = {
     SINGLE_QUOTE: `'`,
@@ -13,7 +13,7 @@ const CompletionActivators = {
 
 
 
-// Credit: Stuyk/altv-crc on Github (Got the Idea when I saw their vscode plugin)
+
 export const events = [
     vscode.workspace.onDidChangeConfiguration(async e => {
         const extensionConfig = vscode.workspace.getConfiguration();
@@ -40,35 +40,37 @@ export const events = [
     // CompletionActivators.COMMA
     // ),
 
-    vscode.languages.registerCompletionItemProvider(['lua'], {
-        provideCompletionItems(document, position, token, context) {
-            const lineText = document.lineAt(position).text;
-            let scriptSide = getPathScriptSide(document.uri);
+    // Credit: Stuyk/altv-crc on Github (Got the Idea when I saw their vscode plugin)
+    // TODO: Add linting / completion for events and callbacks
+    // vscode.languages.registerCompletionItemProvider(['lua'], {
+    //     provideCompletionItems(document, position, token, context) {
+    //         const lineText = document.lineAt(position).text;
+    //         let scriptSide = getPathScriptSide(document.uri);
 
-            const result = findHandler(lineText)
+    //         const result = findHandler(lineText)
 
-            if (!result) return;
-            const [handlerType, handler] = result;
+    //         if (!result) return;
+    //         const [handlerType, handler] = result;
 
-            if (!hasTwoOrLessQuotes(lineText) || !handler) return;
-            if (lineText.includes("TriggerClientEvent")) scriptSide = "CLIENT";
-            if (lineText.includes("TriggerServerEvent")) scriptSide = "SERVER";
+    //         if (!hasTwoOrLessQuotes(lineText) || !handler) return;
+    //         if (lineText.includes("TriggerClientEvent")) scriptSide = "CLIENT";
+    //         if (lineText.includes("TriggerServerEvent")) scriptSide = "SERVER";
 
-            let validEmits: vscode.CompletionItem[] = []
+    //         let validEmits: vscode.CompletionItem[] = []
 
-            let possibleEmits = { ...completionItems[handlerType][scriptSide], ...(handlerType == "EVENT" ? completionItems.EVENT.SHARED : {}) }
+    //         let possibleEmits = { ...completionItems[handlerType][scriptSide], ...(handlerType == "EVENT" ? completionItems.EVENT.SHARED : {}) }
 
-            for (let key of Object.keys(possibleEmits)) {
-                validEmits.push(new vscode.CompletionItem(key, vscode.CompletionItemKind.Event))
-            }
-            return validEmits;
-        },
+    //         for (let key of Object.keys(possibleEmits)) {
+    //             validEmits.push(new vscode.CompletionItem(key, vscode.CompletionItemKind.Event))
+    //         }
+    //         return validEmits;
+    //     },
 
-    },
-    CompletionActivators.SINGLE_QUOTE,
-    CompletionActivators.DOUBLE_QUOTE,
-    CompletionActivators.TICK
-    )
+    // },
+    // CompletionActivators.SINGLE_QUOTE,
+    // CompletionActivators.DOUBLE_QUOTE,
+    // CompletionActivators.TICK
+    // )
 
     // TODO: Experiment with performance when changing client-/serversided libraries on text editor change
     // vscode.window.onDidChangeVisibleTextEditors(async e => {

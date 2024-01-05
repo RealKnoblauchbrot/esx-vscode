@@ -89,7 +89,7 @@ function ExtendedPlayer.removeMoney(money) end
 
 --Returns the Rockstar identifier used
 ---@return string
-function ExtendedPlayer.getIndentifier()
+function ExtendedPlayer.getIdentifier()
     return ExtendedPlayer.identifier
 end
 
